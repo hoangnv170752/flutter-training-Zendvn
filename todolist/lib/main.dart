@@ -1,14 +1,19 @@
-void main(List<String> args) {
-  String name = "Hoang";
-  int age = 20;
-  bool old = false;
-  double time = 0;
+import 'package:flutter/material.dart';
 
-  name = name + " Nguyen";
-  //moi kieu gia tri 
-  dynamic all;
-  all = "Hello";
-  all = 20;
-  //var la khai bao mang kieu cua kieu duoc gan gia tri mac dinh
-  print(all);
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(),
+      child: Container(
+        child: Container(),
+      ),
+    );
+  }
 }
