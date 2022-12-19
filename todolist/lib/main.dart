@@ -9,10 +9,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(),
-      child: Container(
-        child: Container(),
+    return Scaffold(
+      body: Container(
+        alignment: Alignment.center,
+        width: 200,
+        height: 200,
+        child: const Text(
+          "Hello world",
+          style: TextStyle(fontSize: 22),
+        ),
       ),
     );
   }
