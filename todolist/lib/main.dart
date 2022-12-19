@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
+void main(List<String> args) {
+  runApp(const MaterialApp(
+    debugShowCheckedModeBanner: true,
+    home: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
