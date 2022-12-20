@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 void main(List<String> args) {
   runApp(const MaterialApp(
-    debugShowCheckedModeBanner: true,
+    debugShowCheckedModeBanner: false,
     home: MyApp(),
   ));
 }
@@ -13,13 +13,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("Note app", style: TextStyle(fontSize: 30, color: Colors.black),),
+        backgroundColor: Colors.amber
+      ),
       body: Container(
-        alignment: Alignment.center,
-        width: 200,
-        height: 200,
-        child: const Text(
-          "Hello world",
-          style: TextStyle(fontSize: 22),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){},
+        child: Icon(
+          Icons.add,
+          size: 40,
         ),
       ),
     );
