@@ -3,6 +3,12 @@ import 'package:todolist/modal/items.dart';
 import 'package:todolist/widget/card_body_widget.dart';
 import 'package:todolist/widget/card_modal_button.dart';
 
+/**
+ * BT1: khi thêm xong thì phải đóng modal thêm
+ * BT2: khi thêm task yêu cầu người dùng phải nhập trên 5 kí tự
+ * BT3: khi nhấn vào đã có id -> gọi tới phương thức mở modal này lên, duyệt qua vòng lặp chứa các phần tử, lấy phần tử có id bằng với id của phần tử được nhấn -> đổ nội dung vào text input
+ * BT4: số đếm ở AppBar để đếm số task đang có
+ */
 void main(List<String> args) {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
