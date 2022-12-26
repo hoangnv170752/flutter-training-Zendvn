@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 
 class ModalBottom extends StatefulWidget {
-  ModalBottom({Key? key, required this.addTask,  required this.editTask}) : super(key: key);
+  ModalBottom({Key? key, required this.addTask,  required this.editTask,}) : super(key: key);
 
   final Function addTask;
   final Function editTask;
+  // final String item ;
   @override
   State<ModalBottom> createState() => _ModalBottomState();
 }
 
 class _ModalBottomState extends State<ModalBottom> {
+  //TextEditingController controller = TextEditingController(text: item ? item.name : '');
   TextEditingController controller = TextEditingController();
+  static get item => null;
+
 
   void _handleOnclick() {
     final name = controller.text;

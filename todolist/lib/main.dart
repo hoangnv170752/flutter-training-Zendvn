@@ -42,7 +42,8 @@ class _MyAppState extends State<MyApp> {
   }
   void _handleEditTask (String id) {
     setState(() {
-      items.firstWhere((item) => item.id == id);
+      var item = items.firstWhere((item) => item.id == id);
+      print(item);
       showModalBottomSheet(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
@@ -87,7 +88,7 @@ class _MyAppState extends State<MyApp> {
               isScrollControlled: true,
               context: context,
               builder: (BuildContext content) {
-                return ModalBottom(addTask : _handleAddTask, editTask: () => {},);
+                return ModalBottom(addTask : _handleAddTask, editTask: () => {}, );
               },
           );
         },
