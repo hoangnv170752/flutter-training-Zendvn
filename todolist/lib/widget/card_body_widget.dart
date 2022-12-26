@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:confirm_dialog/confirm_dialog.dart';
 
 class CardBody extends StatelessWidget {
-  CardBody({Key? key, required this.item, required this.handleDelete, required this.index}) : super(key: key);
+  CardBody({Key? key, required this.item, required this.handleEdit, required this.handleDelete, required this.index}) : super(key: key);
   var item;
   var index;
   final Function handleDelete;
+  final Function handleEdit;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +28,18 @@ class CardBody extends StatelessWidget {
               style: TextStyle(
                   fontSize: 20,
                   color: Colors.black87
+              ),
+            ),
+            InkWell(
+              onTap: () async {
+                if (await confirm(context)) {
+                  handleEdit(item.id);
+                }
+                return print('pressedEdit');
+              },
+              child: Icon(
+                Icons.edit_outlined,
+                color: Colors.green,
               ),
             ),
             InkWell(

@@ -4,10 +4,10 @@ import 'package:todolist/widget/card_body_widget.dart';
 import 'package:todolist/widget/card_modal_button.dart';
 
 /**
- * BT1: khi thêm xong thì phải đóng modal thêm
- * BT2: khi thêm task yêu cầu người dùng phải nhập trên 5 kí tự
+ * BT1: khi thêm xong thì phải đóng modal thêm - bổ sung Navigator.pop(context) vào hàm handle Add
+ * BT2: khi thêm task yêu cầu người dùng phải nhập trên 5 kí tự - bổ sung validation vào
  * BT3: khi nhấn vào đã có id -> gọi tới phương thức mở modal này lên, duyệt qua vòng lặp chứa các phần tử, lấy phần tử có id bằng với id của phần tử được nhấn -> đổ nội dung vào text input
- * BT4: số đếm ở AppBar để đếm số task đang có
+ * BT4: số đếm ở AppBar để đếm số task đang có - bổ sung biến đếm task count
  */
 void main(List<String> args) {
   runApp(MaterialApp(
@@ -25,16 +25,34 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final List<DataItems> items = [];
-
+  int taskCount = 0;
   void _handleAddTask (String name) {
     final newItem = DataItems(id: DateTime.now().toString(), name: name);
     setState(() {
       items.add(newItem);
+      taskCount += 1;
+      Navigator.pop(context);
     });
   }
   void _handleDeleteTask (String id) {
     setState(() {
       items.removeWhere((item) => item.id == id);
+      taskCount -= 1;
+    });
+  }
+  void _handleEditTask (String id) {
+    setState(() {
+      items.firstWhere((item) => item.id == id);
+      showModalBottomSheet(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+        ),
+        isScrollControlled: true,
+        context: context,
+        builder: (BuildContext content) {
+          return ModalBottom(editTask: _handleEditTask, addTask: () => {},);
+        },
+      );
     });
   }
   @override
@@ -43,7 +61,7 @@ class _MyAppState extends State<MyApp> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Note app", style: TextStyle(fontSize: 30, color: Colors.black),),
+        title: Text('Note app - ${taskCount}', style: TextStyle(fontSize: 30, color: Colors.black),),
         backgroundColor: Colors.amber
       ),
       body: SingleChildScrollView(
@@ -54,6 +72,7 @@ class _MyAppState extends State<MyApp> {
                 index : items.indexOf(item),
                 item: item ,
                 handleDelete: _handleDeleteTask,
+                handleEdit: _handleEditTask,
               ))
                 .toList(),
         ),
@@ -68,7 +87,7 @@ class _MyAppState extends State<MyApp> {
               isScrollControlled: true,
               context: context,
               builder: (BuildContext content) {
-                return ModalBottom(addTask : _handleAddTask);
+                return ModalBottom(addTask : _handleAddTask, editTask: () => {},);
               },
           );
         },

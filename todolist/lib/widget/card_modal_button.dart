@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class ModalBottom extends StatefulWidget {
-  ModalBottom({Key? key, required this.addTask}) : super(key: key);
+  ModalBottom({Key? key, required this.addTask,  required this.editTask}) : super(key: key);
 
   final Function addTask;
-
+  final Function editTask;
   @override
   State<ModalBottom> createState() => _ModalBottomState();
 }
@@ -31,6 +31,9 @@ class _ModalBottomState extends State<ModalBottom> {
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please write some things';
+                  }
+                  if (value.length <= 5) {
+                    return 'Type more than 5 characters';
                   }
                   return null;
                 },
