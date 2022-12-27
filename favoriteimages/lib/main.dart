@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:favoriteimages/widget/body_swiper.dart';
 import 'model/item_model.dart';
+import 'package:badges/badges.dart';
 void main(List<String> args) {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
@@ -22,6 +23,16 @@ class MyApp extends StatelessWidget {
         name: '2',
         image: 'assets/images/img2.jpg'
     ),
+    Item(
+        id: '3',
+        name: '3',
+        image: 'assets/images/img3.jpg'
+    ),
+    Item(
+        id: '4',
+        name: '4',
+        image: 'assets/images/img4.jpg'
+    ),
   ];
   @override
   Widget build(BuildContext context) {
@@ -40,6 +51,10 @@ class MyApp extends StatelessWidget {
             const PopupMenuItem(child: Text('Favorite')),
           ],),
         ],
+        leading: Padding(padding:EdgeInsets.all(12), child: Badge(
+            badgeContent: Text('2'),
+            child: Icon(Icons.favorite)
+        )),
         elevation: 10.0,
       ),
       body: SwipeBody(items: Items,)
