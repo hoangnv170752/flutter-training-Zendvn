@@ -1,12 +1,21 @@
+import 'package:favoriteimages/providers/item_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:favoriteimages/widget/body_swiper.dart';
 import 'model/item_model.dart';
 import 'package:badges/badges.dart';
+
+
 void main(List<String> args) {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: MyApp(),
-  ));
+  runApp(
+    ChangeNotifierProvider(
+        create: (context) => ItemProvider(),
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: MyApp(),
+        ),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -52,7 +61,10 @@ class MyApp extends StatelessWidget {
           ],),
         ],
         leading: Padding(padding:EdgeInsets.all(12), child: Badge(
-            badgeContent: Text('2'),
+            badgeContent: Text(
+              Provider.of<ItemProvider>(context).favorite.toString(),
+              style: TextStyle(color: Colors.white),
+            ),
             child: Icon(Icons.favorite)
         )),
         elevation: 10.0,

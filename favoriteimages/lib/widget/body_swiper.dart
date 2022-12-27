@@ -1,5 +1,7 @@
+import 'package:favoriteimages/providers/item_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:provider/provider.dart';
 
 class SwipeBody extends StatelessWidget {
   const SwipeBody({Key? key, required this.items}) : super(key: key);
@@ -20,7 +22,12 @@ class SwipeBody extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
               footer: GridTileBar(
-                title: Icon(Icons.favorite),
+                title: InkWell(
+                    onTap: (() {
+                      Provider.of<ItemProvider>(context, listen: false).updateFavorite();
+                    }),
+                    child: Icon(Icons.favorite)
+                ),
                 subtitle: Text('Like'),
                 trailing: Text(items[index].name , style: TextStyle(color: Colors.white),),
               ),
