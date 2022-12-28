@@ -21,30 +21,9 @@ void main(List<String> args) {
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
 
-  final List<Item> Items = [
-    Item(
-        id: '1',
-        name: '1',
-        image: 'assets/images/img1.jpg'
-    ),
-    Item(
-        id: '2',
-        name: '2',
-        image: 'assets/images/img2.jpg'
-    ),
-    Item(
-        id: '3',
-        name: '3',
-        image: 'assets/images/img3.jpg'
-    ),
-    Item(
-        id: '4',
-        name: '4',
-        image: 'assets/images/img4.jpg'
-    ),
-  ];
   @override
   Widget build(BuildContext context) {
+    Provider.of<ItemProvider>(context, listen: false).readJson();
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -60,16 +39,22 @@ class MyApp extends StatelessWidget {
             const PopupMenuItem(child: Text('Favorite')),
           ],),
         ],
-        leading: Padding(padding:EdgeInsets.all(12), child: Badge(
-            badgeContent: Text(
-              Provider.of<ItemProvider>(context).favorite.toString(),
-              style: TextStyle(color: Colors.white),
-            ),
-            child: Icon(Icons.favorite)
-        )),
+       /* leading: Padding(
+            padding:EdgeInsets.all(12), 
+            child: Consumer<ItemProvider>(
+              builder: (context, item, child) {
+                return Badge(
+                  badgeContent: Text(
+                    item.favorite.toString(),
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  child: Icon(Icons.favorite),
+                );
+              },
+            )), */
         elevation: 10.0,
       ),
-      body: SwipeBody(items: Items,)
+      body: SwipeBody()
     );
   }
 }
