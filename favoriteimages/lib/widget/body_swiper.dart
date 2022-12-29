@@ -5,11 +5,12 @@ import 'package:provider/provider.dart';
 import '../model/item_model.dart';
 
 class SwipeBody extends StatelessWidget {
-  const SwipeBody({Key? key}) : super(key: key);
-
+  const SwipeBody({Key? key, required this.isFavorite}) : super(key: key);
+  final isFavorite;
   @override
   Widget build(BuildContext context) {
-    final items = Provider.of<ItemProvider>(context).items;
+    final dataItem = Provider.of<ItemProvider>(context);
+    final items = isFavorite ? dataItem.showItemFavorite() : dataItem.items;
     return Swiper(
         layout: SwiperLayout.STACK,
         itemWidth: 300.0,
@@ -38,7 +39,6 @@ class SwipeBody extends StatelessWidget {
                         ),
                       ); 
                     },
-                
                   ),
                   subtitle: Text('Like'),
                   trailing: Text(items[index].name , style: TextStyle(color: Colors.white),),

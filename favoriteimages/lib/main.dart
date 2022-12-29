@@ -17,13 +17,28 @@ void main(List<String> args) {
     ),
   );
 }
-
-class MyApp extends StatelessWidget {
+enum filterOption {
+  all, favorite
+}
+class MyApp extends StatefulWidget {
   MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool isFavorite = false;
+
+  @override
+  void initState() {
+    super.initState();
     Provider.of<ItemProvider>(context, listen: false).readJson();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -34,13 +49,29 @@ class MyApp extends StatelessWidget {
           ),
         ),
         actions: [
-          PopupMenuButton(itemBuilder: (_) => [
-            const PopupMenuItem(child: Text('Show all')),
-            const PopupMenuItem(child: Text('Favorite')),
+          PopupMenuButton(
+            onSelected: (value) {
+              setState(() {
+                if (value == filterOption.all) {
+                  isFavorite = false;
+                } else {
+                  isFavorite = true;
+                }
+              });
+            },
+            itemBuilder: (_) => [
+              const PopupMenuItem(
+                  value: filterOption.all,
+                  child: Text('Show all')
+              ),
+              const PopupMenuItem(
+                  value: filterOption.favorite,
+                  child: Text('Favorite')
+              ),
           ],),
         ],
        /* leading: Padding(
-            padding:EdgeInsets.all(12), 
+            padding:EdgeInsets.all(12),
             child: Consumer<ItemProvider>(
               builder: (context, item, child) {
                 return Badge(
@@ -54,7 +85,7 @@ class MyApp extends StatelessWidget {
             )), */
         elevation: 10.0,
       ),
-      body: SwipeBody()
+      body: SwipeBody(isFavorite: isFavorite,)
     );
   }
 }
