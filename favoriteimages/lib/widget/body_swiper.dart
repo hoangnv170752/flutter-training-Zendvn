@@ -31,6 +31,7 @@ class SwipeBody extends StatelessWidget {
                       return InkWell(
                         onTap: (() {
                           item.toggleIsFavorite();
+                          Provider.of<ItemProvider>(context, listen: false).handleCountItemFav();
                         }), 
                         child: Icon(
                           Icons.favorite,

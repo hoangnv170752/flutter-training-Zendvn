@@ -45,7 +45,11 @@ class _MyAppState extends State<MyApp> {
         title: const Text('Favorite Images'),
         flexibleSpace: Container(
           decoration: const BoxDecoration(
-            gradient: LinearGradient(colors: <Color>[Colors.black, Colors.blue]),
+            gradient: LinearGradient(
+                colors: <Color>[Colors.purple, Colors.blue],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter
+            ),
           ),
         ),
         actions: [
@@ -70,19 +74,19 @@ class _MyAppState extends State<MyApp> {
               ),
           ],),
         ],
-       /* leading: Padding(
+        leading: Padding(
             padding:EdgeInsets.all(12),
             child: Consumer<ItemProvider>(
               builder: (context, item, child) {
                 return Badge(
                   badgeContent: Text(
-                    item.favorite.toString(),
+                    item.countItemFavorite.toString(),
                     style: TextStyle(color: Colors.white),
                   ),
                   child: Icon(Icons.favorite),
                 );
               },
-            )), */
+            )),
         elevation: 10.0,
       ),
       body: SwipeBody(isFavorite: isFavorite,)
