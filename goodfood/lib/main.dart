@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:goodfood/pages/favorite/favorite_body.dart';
+import 'package:goodfood/pages/home/home_body.dart';
+import 'package:goodfood/pages/seen/seen_body.dart';
 
 void main() {
   runApp(const MaterialApp(
@@ -19,18 +22,9 @@ class _MyAppState extends State<MyApp> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
+    HomeBody(),
+    FavoriteBody(),
+    SeenBody()
   ];
 
   void _onItemTapped(int index) {
@@ -54,12 +48,12 @@ class _MyAppState extends State<MyApp> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Business',
+            icon: Icon(Icons.favorite),
+            label: 'Favorite',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'School',
+            icon: Icon(Icons.timelapse_sharp),
+            label: 'Seen',
           ),
         ],
         currentIndex: _selectedIndex,
