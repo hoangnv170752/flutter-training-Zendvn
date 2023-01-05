@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:goodfood/config/const.dart';
 import 'package:goodfood/pages/favorite/favorite_body.dart';
 import 'package:goodfood/pages/home/home_body.dart';
+import 'package:goodfood/pages/home/widget/category.dart';
 import 'package:goodfood/pages/seen/seen_body.dart';
+
+import 'home/widget/product.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -15,7 +18,7 @@ class _MyAppState extends State<MyApp> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
-    HomeBody(),
+    ProductPage(),
     FavoriteBody(),
     SeenBody()
   ];
@@ -29,9 +32,18 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Good Food"),
+        title: const Text("Routing screens"),
         centerTitle: true,
-        backgroundColor: dColorMain,
+        backgroundColor: Theme.of(context).backgroundColor,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                colors: <Color>[Color.fromARGB(255, 123, 201, 95), Colors.blue],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter
+            ),
+          ),
+        ),
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
@@ -52,9 +64,11 @@ class _MyAppState extends State<MyApp> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: dColorIconButtonActive,
         onTap: _onItemTapped,
-        backgroundColor: dColorMain,
+        backgroundColor: dColorCustom,
+        iconSize: sizeIconButton, 
+        unselectedItemColor: dColorIconButtonInactive,
       ),
     );
   }
