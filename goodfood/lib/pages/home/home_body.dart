@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goodfood/config/const.dart';
+import 'package:goodfood/pages/home/widget/category.dart';
 class HomeBody extends StatelessWidget {
   const HomeBody({Key? key}) : super(key: key);
 
@@ -12,32 +13,40 @@ class HomeBody extends StatelessWidget {
         crossAxisSpacing: 10,
         mainAxisSpacing: 10
       ),
-      itemCount: 4,
+      itemCount: 12,
       itemBuilder: (BuildContext context, int index) {
-        return Column(
-          children: [
-            Expanded(
-              flex: 2,
-              child: Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: NetworkImage('https://c4.wallpaperflare.com/wallpaper/246/163/668/warcraft-iii-reforged-blizzard-entertainment-warcraft-hd-wallpaper-preview.jpg'))
+        return InkWell(
+          onTap: () {
+            /* Navigator.of(context).push(MaterialPageRoute(
+                builder: ((_) => CategoryPage(title: index))
+            )); */
+            Navigator.pushNamed(context, '/category');
+          },
+          child: Column(
+            children: [
+              Expanded(
+                flex: 2,
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage('https://c4.wallpaperflare.com/wallpaper/246/163/668/warcraft-iii-reforged-blizzard-entertainment-warcraft-hd-wallpaper-preview.jpg'))
+                    ),
+                  )),
+              Expanded(
+                flex: 1,
+                child: Center(
+                  child: Text(
+                    'Loren Ipsum',
+                    style: styleTitleItem,
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
                   ),
-                )),
-            Expanded(
-              flex: 1,
-              child: Center(
-                child: Text(
-                  'Loren Ipsum',
-                  style: styleTitleItem,
-                  textAlign: TextAlign.center,
-                  maxLines: 2,
-                ),
-              ))
-          ],
+                ))
+            ],
+          ),
         );
       },
     );
