@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:goodfood/config/const.dart';
+import 'package:goodfood/providers/category_provider.dart';
 
 class CategoryPage extends StatelessWidget {
   static const routeName = '/category';
-  const CategoryPage({Key? key}) : super(key: key);
-  //final title;
+  CategoryPage({Key? key}) : super(key: key);
+
+
   @override
   Widget build(BuildContext context) {
     final params = (ModalRoute.of(context)?.settings.arguments ?? <String, dynamic>{}) as Map;
 
     print(params['title']);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Category screen '),
