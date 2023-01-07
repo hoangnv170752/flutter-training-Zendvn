@@ -5,14 +5,12 @@ import 'package:goodfood/providers/category_provider.dart';
 class CategoryPage extends StatelessWidget {
   static const routeName = '/category';
   CategoryPage({Key? key}) : super(key: key);
-
+  
 
   @override
   Widget build(BuildContext context) {
-    final params = (ModalRoute.of(context)?.settings.arguments ?? <String, dynamic>{}) as Map;
-
-    print(params['title']);
-
+    var data = ModalRoute.of(context)?.settings.arguments;
+    print(data);
     return Scaffold(
       appBar: AppBar(
         title: Text('Category screen '),

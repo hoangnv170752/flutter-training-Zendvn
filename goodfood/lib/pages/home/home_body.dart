@@ -12,19 +12,27 @@ class HomeBody extends StatelessWidget {
         future: CategoryProvider().readJson(),
         builder: (BuildContext content , AsyncSnapshot snapshot) {
           print(snapshot);
-        return GridView.builder(
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: CircularProgressIndicator()
+            );
+          } 
+          var categoryItem = snapshot.hasData ? snapshot.data : [];
+          return snapshot.hasData ? GridView.builder(
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               crossAxisSpacing: 10,
               mainAxisSpacing: 10
           ),
-          itemCount: 12,
+          itemCount: categoryItem.length,
           itemBuilder: (BuildContext context, int index) {
           return InkWell(
             onTap: () {
-              Navigator.pushNamed(context, CategoryPage.routeName, arguments: {
-                "title" : index
+              Navigator.pushNamed(context, CategoryPage.routeName, 
+              arguments: {
+                "title" : categoryItem[index].name, 
+                "categoryId" : categoryItem[index].id,
               });
             },
             child: Column(
@@ -37,14 +45,16 @@ class HomeBody extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                           image: DecorationImage(
                               fit: BoxFit.cover,
-                              image: NetworkImage('https://c4.wallpaperflare.com/wallpaper/246/163/668/warcraft-iii-reforged-blizzard-entertainment-warcraft-hd-wallpaper-preview.jpg'))
+                              image: AssetImage(
+                                categoryItem[index].image
+                              ))
                       ),
                     )),
                 Expanded(
                     flex: 1,
                     child: Center(
                       child: Text(
-                        'Loren Ipsum',
+                        categoryItem[index].name.toString(),
                         style: styleTitleItem,
                         textAlign: TextAlign.center,
                         maxLines: 2,
@@ -54,6 +64,8 @@ class HomeBody extends StatelessWidget {
             ),
           );
         },
+      ) : Center(
+        child: Text("Hello, world"),
       );
     }
     );

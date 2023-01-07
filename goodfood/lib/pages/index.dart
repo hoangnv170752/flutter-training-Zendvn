@@ -4,6 +4,8 @@ import 'package:goodfood/pages/favorite/favorite_body.dart';
 import 'package:goodfood/pages/home/home_body.dart';
 import 'package:goodfood/pages/home/widget/category.dart';
 import 'package:goodfood/pages/seen/seen_body.dart';
+import 'package:goodfood/providers/product_provider.dart';
+import 'package:provider/provider.dart';
 
 import 'home/widget/product.dart';
 
@@ -31,7 +33,10 @@ class _MyAppState extends State<MyApp> {
   }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return FutureBuilder(
+      future: Provider.of<ProductProvider>(context).readJson(),
+      builder: (BuildContext content , AsyncSnapshot snapshot) {
+      return Scaffold(
       appBar: AppBar(
         title: const Text("Routing screens"),
         centerTitle: true,
@@ -72,5 +77,6 @@ class _MyAppState extends State<MyApp> {
         unselectedItemColor: dColorIconButtonInactive,
       ),
     );
+    });
   }
 }
