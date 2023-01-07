@@ -8,6 +8,7 @@ import 'package:goodfood/pages/seen/seen_body.dart';
 import 'home/widget/product.dart';
 
 class MyApp extends StatefulWidget {
+  static const routeName = '/';
   const MyApp({Key? key}) : super(key: key);
 
   @override

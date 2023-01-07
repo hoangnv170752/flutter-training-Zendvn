@@ -20,7 +20,9 @@ class HomeBody extends StatelessWidget {
             /* Navigator.of(context).push(MaterialPageRoute(
                 builder: ((_) => CategoryPage(title: index))
             )); */
-            Navigator.pushNamed(context, '/category');
+            Navigator.pushNamed(context, CategoryPage.routeName, arguments: {
+              "title" : index
+            });
           },
           child: Column(
             children: [
