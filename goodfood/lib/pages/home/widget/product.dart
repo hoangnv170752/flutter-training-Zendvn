@@ -25,6 +25,7 @@ class _ProductPageState extends State<ProductPage> {
   }
   @override
   Widget build(BuildContext context) {
+    bool change = true;
     final arg = ModalRoute.of(context)!.settings.arguments as Map;
     var product = Provider.of<ProductProvider>(context).getItemWithId(arg['id']);
     return Scaffold(
@@ -68,7 +69,18 @@ class _ProductPageState extends State<ProductPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.favorite),
+                            InkWell(
+                              onTap: (() {
+                                product.toggleIsFavorite();
+                                setState(() {
+                                  change = !change;
+                                });
+                              }),
+                              child: Icon(
+                                Icons.favorite,
+                                color: product.isFavorite ? dColorIconButtonActive : dColorIconButtonInactive,
+                                ),
+                            ),
                             SizedBox(width: 10,),
                             Text(product.favorite)],
                         ),

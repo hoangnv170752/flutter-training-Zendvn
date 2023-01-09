@@ -27,7 +27,9 @@ class Product extends ChangeNotifier {
   });
   void toggleIsFavorite () {
     isFavorite = !isFavorite;
-    favorite = isFavorite ? (int.parse(favorite) + 1).toString() : (int.parse(favorite) - 1).toString();
+    favorite = isFavorite 
+    ? (int.parse(favorite) + 1).toString() 
+    : (int.parse(favorite) - 1).toString();
     notifyListeners();
   }
   Map<String, dynamic> toMap() {

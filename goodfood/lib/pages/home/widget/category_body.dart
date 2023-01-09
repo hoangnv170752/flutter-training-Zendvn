@@ -9,7 +9,7 @@ class CategoryBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var product = Provider.of<Product>(context);
+    var product = Provider.of<Product>(context, listen: false);
 
     return Container(
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
@@ -25,28 +25,37 @@ class CategoryBody extends StatelessWidget {
                     subtitle: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        InkWell(
-                          onTap: (() {
-                            product.toggleIsFavorite();
-                          }),
-                          child: Icon(
-                              Icons.favorite,
-                              size: sizeIconButton,
-                              color: product.isFavorite ? Colors.red : Colors.white,
-                          ),
-                        ),
-                        SizedBox(
+                          Consumer<Product>(builder: (((context, value, child) {
+                            return Row(
+                              children: [
+                                InkWell(
+                                  onTap: (() {
+                                    value.toggleIsFavorite();
+                                  }),
+                                  child: Icon(
+                                      Icons.favorite,
+                                      size: sizeIconButton,
+                                      color: value.isFavorite ? Colors.red : Colors.white,
+                                  ),
+                                ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                  value.favorite,
+                                  style: styleTitleCardItem ,
+                              )
+                              ]
+                          );}
+                          ))),
+                        const SizedBox(
                           width: 10,
                         ),
-                        Text(
-                            product.favorite,
-                            style: styleTitleCardItem ,
-                        ),
-                        Icon(
+                        const Icon(
                             Icons.timelapse_sharp,
                             size: sizeIconButton,
                         ),
-                        SizedBox(
+                        const SizedBox(
                             width: 10,
                         ),
                         Text(
