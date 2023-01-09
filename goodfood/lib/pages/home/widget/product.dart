@@ -1,129 +1,168 @@
 import 'package:flutter/material.dart';
 import 'package:goodfood/config/const.dart';
-class ProductPage extends StatelessWidget {
+import 'package:flutter/services.dart';
+import 'package:goodfood/providers/product_provider.dart';
+import 'package:provider/provider.dart';
+class ProductPage extends StatefulWidget {
+  static const routeName = '/product';
   const ProductPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-          child: Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: NetworkImage(
-                      'https://c4.wallpaperflare.com/wallpaper/246/163/668/warcraft-iii-reforged-blizzard-entertainment-warcraft-hd-wallpaper-preview.jpg'
-                  ))
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Container(
-                  width: 120,
-                  height: 50,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(12),
-                      ),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.favorite),
-                      SizedBox(width: 10,),
-                      Text('123')],
-                  ),
-                ),
-                Container(
-                  width: 120,
-                  height: 50,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(12),
-                      ),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.timelapse_sharp),
-                      SizedBox(width: 10,),
-                      Text('123')],
-                  ),
-                ),
-              ],
-            ),
-        ),
-          flex: 1,
-        ),
-        Expanded(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              children: [
-                Text('loren ipsum '),
-                SizedBox(height: 20,),
-                Column(
-                  children: [
-                    Container(
-                      width: 167,
-                      height: 35,
-                      decoration: BoxDecoration(
-                        color: Colors.amber,
-                        borderRadius: BorderRadius.vertical(top: Radius.circular(20))
-                      ),
-                      child: Center(child: Text('Nguyên liệu', style: styleTitleItem,),),
-                    ),
-                    Container(
-                      padding: EdgeInsets.all(10),
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: Colors.amber,
-                        borderRadius: BorderRadius.circular(2),
+  State<ProductPage> createState() => _ProductPageState();
+}
 
+class _ProductPageState extends State<ProductPage> {
+  @override
+  void initState() {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top, SystemUiOverlay.bottom]);
+    super.dispose();
+  }
+  @override
+  Widget build(BuildContext context) {
+    final arg = ModalRoute.of(context)!.settings.arguments as Map;
+    var product = Provider.of<ProductProvider>(context).getItemWithId(arg['id']);
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/background/background_product.png"),fit: BoxFit.cover
+          )
+        ),
+        child: Column(
+          children: [
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: AssetImage(product.image)
+                  )
+                ),
+                child: Stack(
+                  alignment: Alignment.bottomCenter,
+                  children:[ 
+                    Positioned(
+                      top: 20,
+                      left: 30,
+                      child: BackButton(color: dColorIconButtonInactive),
                       ),
-                        child: Text(
-                            'Loren ipsum'
+                    Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Container(
+                        width: 120,
+                        height: 50,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(12),
+                            ),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.favorite),
+                            SizedBox(width: 10,),
+                            Text(product.favorite)],
+                        ),
+                      ),
+                      Container(
+                        width: 120,
+                        height: 50,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(12),
+                            ),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.timelapse_sharp),
+                            SizedBox(width: 10,),
+                            Text(product.view)],
+                        ),
+                      ),
+                    ],
+                  ),]
+                ),
+            ),
+              flex: 1,
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  children: [
+                    Text(product.title),
+                    SizedBox(height: 20,),
+                    Column(
+                      children: [
+                        Container(
+                          width: 167,
+                          height: 35,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.vertical(top: Radius.circular(20))
+                          ),
+                          child: Center(child: Text('Nguyên liệu', style: styleTitleItem,),),
+                        ),
+                        Container(
+                          padding: EdgeInsets.all(10),
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(2),
+          
+                          ),
+                            child: Text(
+                                product.ingredients
+                            )
                         )
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Container(
+                          width: 167,
+                          height: 35,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.vertical(top: Radius.circular(20))
+                          ),
+                          child: Center(child: Text('Cách làm', style: styleTitleItem,),),
+                        ),
+                        Container(
+                            padding: EdgeInsets.all(10),
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(2),
+                            ),
+                            child: Text(
+                                product.instructions
+                            )
+                        )
+                      ],
                     )
                   ],
                 ),
-                Column(
-                  children: [
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      width: 167,
-                      height: 35,
-                      decoration: BoxDecoration(
-                          color: Colors.amber,
-                          borderRadius: BorderRadius.vertical(top: Radius.circular(20))
-                      ),
-                      child: Center(child: Text('Nguyên liệu', style: styleTitleItem,),),
-                    ),
-                    Container(
-                        padding: EdgeInsets.all(10),
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color: Colors.amber,
-                          borderRadius: BorderRadius.circular(2),
-                        ),
-                        child: Text(
-                            'Loren ipsum'
-                        )
-                    )
-                  ],
-                )
-              ],
-            ),
-          ),
-          flex: 2,
-        )
-      ],
+              ),
+              flex: 2,
+            )
+          ],
+        ),
+      ),
     );
   }
 }
