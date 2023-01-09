@@ -18,9 +18,10 @@ class HomeBody extends StatelessWidget {
             );
           } 
           var categoryItem = snapshot.hasData ? snapshot.data : [];
-          return snapshot.hasData ? GridView.builder(
+          return snapshot.hasData
+              ? GridView.builder(
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               crossAxisSpacing: 10,
               mainAxisSpacing: 10
@@ -65,7 +66,7 @@ class HomeBody extends StatelessWidget {
           );
         },
       ) : Center(
-        child: Text("Hello, world"),
+        child: Text("Không có dữ liệu"),
       );
     }
     );

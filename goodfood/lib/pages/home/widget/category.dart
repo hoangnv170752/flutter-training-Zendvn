@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:goodfood/config/const.dart';
-import 'package:goodfood/providers/category_provider.dart';
+import 'package:goodfood/providers/product_provider.dart';
+import 'package:provider/provider.dart';
+
 
 class CategoryPage extends StatelessWidget {
   static const routeName = '/category';
@@ -9,11 +11,14 @@ class CategoryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var data = ModalRoute.of(context)?.settings.arguments;
-    print(data);
+    final data = ModalRoute.of(context)!.settings.arguments as Map;
+    var products = Provider.of<ProductProvider>(context).getItemsWithCategoryId(data['categoryId']);
+    print(products.length);
+    print(data['categoryId']);
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Category screen '),
+        title: Text(data['title']),
         centerTitle: true,
         backgroundColor: Theme.of(context).backgroundColor,
         flexibleSpace: Container(
@@ -28,10 +33,14 @@ class CategoryPage extends StatelessWidget {
       ),
       body: ListView.separated(
           padding: const EdgeInsets.all(15),
+          itemCount: products.length,
+          separatorBuilder: (BuildContext context, int index) {
+            return SizedBox(height: 20);
+          },
           itemBuilder: (BuildContext context, int index) {
             return InkWell(
               onTap: (() {
-               // Navigator.pop(context);
+                Navigator.pop(context);
               }),
               child: Container(
                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
@@ -42,7 +51,7 @@ class CategoryPage extends StatelessWidget {
                   footer: GridTileBar(
                     backgroundColor: dColorFooterImage,
                     title: Text(
-                      'data',
+                      products[index].title,
                       style: styleTitleItem,
                     ),
                     subtitle: Row(
@@ -56,7 +65,7 @@ class CategoryPage extends StatelessWidget {
                           width: 10,
                         ),
                         Text(
-                            '444',
+                            products[index].favorite,
                             style: styleTitleCardItem ,
                         ),
                         Icon(
@@ -67,24 +76,19 @@ class CategoryPage extends StatelessWidget {
                           width: 10,
                         ),
                         Text(
-                            '222',
+                            products[index].view,
                             style: styleTitleCardItem ,
                         )
                     ],),
                   ),
                   child: ClipRRect(
                       borderRadius: BorderRadius.circular(12),
-                      child: Image.network('https://c4.wallpaperflare.com/wallpaper/246/163/668/warcraft-iii-reforged-blizzard-entertainment-warcraft-hd-wallpaper-preview.jpg', fit: BoxFit.cover,
-                      )
+                      child: Image.asset(products[index].image, fit: BoxFit.cover,)
                   ),
                 ),
               ),
             );
           },
-          separatorBuilder: (BuildContext context, int index) {
-            return const SizedBox(height: 20);
-          },
-          itemCount: 10
       ),
     );
   }
