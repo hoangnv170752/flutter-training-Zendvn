@@ -9,7 +9,7 @@ class SeenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var items = Provider.of<ProductProvider>(context).getItemsIsSeen();
-
+    print(items.length);
     return ListView.builder(
       itemCount: items.length,
       padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),

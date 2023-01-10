@@ -7,7 +7,7 @@ import 'package:goodfood/providers/category_provider.dart';
 import 'package:goodfood/providers/product_provider.dart';
 import 'package:provider/provider.dart';
 
-/*Sửa tên category screen cho đúng  
+/*Sửa tên category screen cho đúng  (done)
   Khi người dùng vào trang mà không thấy có sản phẩm nào thì nên hiện thông báo (Task 3)
   Task 1: Thêm những cái badge số đếm cho biết có bao nhiêu sản phẩm được yêu thích / sản phẩm đã được xem
   Task 2: Bổ sung nút xóa tất cả các sản phẩm được yêu thích

@@ -19,6 +19,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   int _selectedIndex = 0;
+  String screenName = "";
   late Future _dataFuture ;
 
   @override
@@ -34,47 +35,90 @@ class _MyAppState extends State<MyApp> {
     const SeenBody()
   ];
 
+  void screenNameChanged(int index) {
+    setState(() {
+      switch(index) {
+        case 0:
+          screenName = "Home screen";
+          break;
+        case 1:
+          screenName = "Favorite screen";
+          break;
+        case 2:
+          screenName = "Seen screen";
+          break;
+        default:
+          screenName = "Unknown";
+      }
+    });
+  }
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      screenNameChanged(_selectedIndex);
     });
+    print(_selectedIndex);
   }
   @override
   Widget build(BuildContext context) {
+    var itemFavCount = Provider.of<ProductProvider>(context).getItemIsFavorite().length.toString();
+    var itemSeenCount = Provider.of<ProductProvider>(context).getItemsIsSeen().length.toString();
     return FutureBuilder(
       future: _dataFuture,
       builder: (BuildContext content , AsyncSnapshot snapshot) {
       return Scaffold(
-      appBar: AppBar(
-        title: const Text("Routing screens"),
-        centerTitle: true,
-        backgroundColor: Theme.of(context).backgroundColor,
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-                colors: <Color>[Color.fromARGB(255, 123, 201, 95), Colors.blue],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter
+        appBar: AppBar(
+          title:  Text(screenName),
+          centerTitle: true,
+          backgroundColor: Theme.of(context).backgroundColor,
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                  colors: <Color>[Color.fromARGB(255, 123, 201, 95), Colors.blue],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter
+              ),
             ),
           ),
-        ),
+          actions: [
+              PopupMenuButton(
+              onSelected: (value) {
+                setState(() {
+                  if (value == 0) {
+                  } else if (value == 1) {
+                  }
+                });
+              },
+              itemBuilder: (_) => [
+                const PopupMenuItem(
+                    value: 0,
+                    child: Text('Delete all favorite')
+                ),
+                const PopupMenuItem(
+                    value: 1,
+                    child: Text('Delete all seen')
+                ),
+            ],
+            ),
+          ],
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items:  <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite),
-            label: 'Favorite',
+            label: 'Favorite$itemFavCount',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.timelapse_sharp),
-            label: 'Seen',
+            label: 'Seen$itemSeenCount',
           ),
         ],
         currentIndex: _selectedIndex,
