@@ -20,7 +20,8 @@ class _ProductPageState extends State<ProductPage> {
 
   @override
   void dispose() {
-    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top, SystemUiOverlay.bottom]);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: SystemUiOverlay.values); // to re-show bars
     super.dispose();
   }
   @override
@@ -28,6 +29,7 @@ class _ProductPageState extends State<ProductPage> {
     bool change = true;
     final arg = ModalRoute.of(context)!.settings.arguments as Map;
     var product = Provider.of<ProductProvider>(context).getItemWithId(arg['id']);
+    product.toggleIsSeen();
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(

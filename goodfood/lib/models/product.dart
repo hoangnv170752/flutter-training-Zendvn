@@ -14,6 +14,8 @@ class Product extends ChangeNotifier {
   String view;
   String favorite;
   bool isFavorite = false;
+  bool isSeen = false;
+
   Product({
     required this.id,
     required this.categoryId,
@@ -31,6 +33,17 @@ class Product extends ChangeNotifier {
     ? (int.parse(favorite) + 1).toString() 
     : (int.parse(favorite) - 1).toString();
     notifyListeners();
+  }
+  void toggleIsSeen() {
+    isSeen = true;
+  }
+  void handleRemoveIsFavorite () {
+    isFavorite = false;
+    favorite = (int.parse(favorite) - 1).toString();
+  }
+
+  void handleRemoveIsSeen() {
+    isSeen = false;
   }
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

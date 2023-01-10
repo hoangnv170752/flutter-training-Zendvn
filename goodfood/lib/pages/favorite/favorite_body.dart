@@ -1,43 +1,74 @@
 import 'package:flutter/material.dart';
 import 'package:goodfood/config/const.dart';
+import 'package:goodfood/providers/product_provider.dart';
+import 'package:provider/provider.dart';
 class FavoriteBody extends StatelessWidget {
   const FavoriteBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var Items = Provider.of<ProductProvider>(context).getItemIsFavorite();
     return ListView.builder(
-        itemCount: 10,
+        itemCount: Items.length,
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
         itemBuilder: (BuildContext context, int index) {
-          return Dismissible(
-            key: ValueKey<int>(index),
-            child: Padding(
-              padding: EdgeInsets.only(bottom: 10),
-              child: SizedBox(
-                width: double.infinity,
-                height: 140,
-                child: GridTile(
-                  footer: GridTileBar(
-                    title: Text(
-                        'Loren Ipsum', style: styleTitleItem,
-                    ),
-                    trailing: Icon(Icons.swipe, size: sizeIconButton, color: dColorIconButtonInactive,),
-                    backgroundColor: Colors.white70,
+          return ChangeNotifierProvider.value(
+            value: Items[index],
+            child: Dismissible(
+              confirmDismiss: (direction) async {
+               return await showDialog(
+                  context: context,
+                  builder: (BuildContext context) => AlertDialog(
+                    title: const Text('Xóa dữ liệu'),
+                    content: const Text('Xóa món ăn yêu thích'),
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: () => Navigator.pop(context, false),
+                        child: const Text('Hủy'),
+                      ),
+                      TextButton(
+                        onPressed: () => Navigator.pop(context, true),
+                        child: const Text('Xóa'),
+                      ),
+                    ],
                   ),
-                  child: Container(
-                    width: double.infinity,
-                    height: 140,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: NetworkImage('https://c4.wallpaperflare.com/wallpaper/246/163/668/warcraft-iii-reforged-blizzard-entertainment-warcraft-hd-wallpaper-preview.jpg')
-                      )
+                );
+              },
+              onDismissed: ((direction) {
+                Items[index].handleRemoveIsFavorite();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Đã xóa thành công!!'))
+                );
+              }),
+              key: ValueKey<int>(index),
+              child: Padding(
+                padding: EdgeInsets.only(bottom: 10),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 140,
+                  child: GridTile(
+                    footer: GridTileBar(
+                      title: Text(
+                          Items[index].title, style: styleTitleItem,
+                      ),
+                      trailing: Icon(Icons.swipe, size: sizeIconButton, color: dColorIconButtonInactive,),
+                      backgroundColor: Colors.white70,
+                    ),
+                    child: Container(
+                      width: double.infinity,
+                      height: 140,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage(Items[index].image)
+                        )
+                      ),
                     ),
                   ),
                 ),
-              ),
-            )
+              )
+            ),
           );
         },
     );
