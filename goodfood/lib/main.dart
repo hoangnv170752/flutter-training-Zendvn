@@ -7,6 +7,13 @@ import 'package:goodfood/providers/category_provider.dart';
 import 'package:goodfood/providers/product_provider.dart';
 import 'package:provider/provider.dart';
 
+/*Sửa tên category screen cho đúng  
+  Khi người dùng vào trang mà không thấy có sản phẩm nào thì nên hiện thông báo (Task 3)
+  Task 1: Thêm những cái badge số đếm cho biết có bao nhiêu sản phẩm được yêu thích / sản phẩm đã được xem
+  Task 2: Bổ sung nút xóa tất cả các sản phẩm được yêu thích
+  Task 3: Show ra những màn hình rỗng
+  Task 4: Chức năng search | có nút search ở góc màn hình  => chuyển sang màn hình những sản phẩm được tìm thấy với từ khóa được highlight
+*/
 void main(List<String> args) {
   runApp(
     MultiProvider(providers: [
