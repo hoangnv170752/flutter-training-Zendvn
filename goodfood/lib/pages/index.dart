@@ -19,8 +19,8 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   int _selectedIndex = 0;
-  String screenName = "";
-  late Future _dataFuture ;
+  String screenName = "Home screen";
+  late Future _dataFuture;
 
   @override
   void didChangeDependencies() {
@@ -64,6 +64,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     var itemFavCount = Provider.of<ProductProvider>(context).getItemIsFavorite().length.toString();
     var itemSeenCount = Provider.of<ProductProvider>(context).getItemsIsSeen().length.toString();
+    var items = Provider.of<ProductProvider>(context).getItemIsFavorite();
+
     return FutureBuilder(
       future: _dataFuture,
       builder: (BuildContext content , AsyncSnapshot snapshot) {
