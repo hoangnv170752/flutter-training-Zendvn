@@ -9,8 +9,11 @@ class SeenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var items = Provider.of<ProductProvider>(context).getItemsIsSeen();
+    var itemSeenCount = Provider.of<ProductProvider>(context).getItemsIsSeen().length;
     print(items.length);
-    return ListView.builder(
+    return (items == [])  ? Center(
+              child: Text('Chưa có thành phần nào')
+          ) : ListView.builder(
       itemCount: items.length,
       padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
       itemBuilder: (BuildContext context, int index) {

@@ -8,7 +8,11 @@ class FavoriteBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var Items = Provider.of<ProductProvider>(context).getItemIsFavorite();
-    return ListView.builder(
+    var itemFavCount = Provider.of<ProductProvider>(context).getItemIsFavorite().length;
+    print(Items);
+    return (Items == [])  ? Center(
+        child: Text('Chưa có thành phần nào')
+    ) : ListView.builder(
         itemCount: Items.length,
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
         itemBuilder: (BuildContext context, int index) {
@@ -36,6 +40,7 @@ class FavoriteBody extends StatelessWidget {
               },
               onDismissed: ((direction) {
                 Items[index].handleRemoveIsFavorite();
+                print(itemFavCount);
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text('Đã xóa thành công!!'))
                 );
@@ -43,33 +48,35 @@ class FavoriteBody extends StatelessWidget {
               key: ValueKey<int>(index),
               child: Padding(
                 padding: EdgeInsets.only(bottom: 10),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 140,
-                  child: GridTile(
-                    footer: GridTileBar(
-                      title: Text(
-                          Items[index].title, style: styleTitleItem,
+                child: Center(
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: 140,
+                    child: GridTile(
+                      footer: GridTileBar(
+                        title: Text(
+                            Items[index].title, style: styleTitleItem,
+                        ),
+                        trailing: Icon(Icons.swipe, size: sizeIconButton, color: dColorIconButtonInactive,),
+                        backgroundColor: Colors.white70,
                       ),
-                      trailing: Icon(Icons.swipe, size: sizeIconButton, color: dColorIconButtonInactive,),
-                      backgroundColor: Colors.white70,
-                    ),
-                    child: Container(
-                      width: double.infinity,
-                      height: 140,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage(Items[index].image)
-                        )
+                      child: Container(
+                        width: double.infinity,
+                        height: 140,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage(Items[index].image)
+                          )
+                        ),
                       ),
                     ),
                   ),
                 ),
               )
             ),
-          );
+          ) ;
         },
     );
   }

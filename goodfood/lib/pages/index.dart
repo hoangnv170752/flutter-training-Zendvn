@@ -6,13 +6,13 @@ import 'package:goodfood/pages/home/widget/category.dart';
 import 'package:goodfood/pages/seen/seen_body.dart';
 import 'package:goodfood/providers/product_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:badges/badges.dart';
 
 import 'home/widget/product.dart';
 
 class MyApp extends StatefulWidget {
   static const routeName = '/';
   const MyApp({Key? key}) : super(key: key);
-
   @override
   State<MyApp> createState() => _MyAppState();
 }
@@ -58,14 +58,13 @@ class _MyAppState extends State<MyApp> {
       _selectedIndex = index;
       screenNameChanged(_selectedIndex);
     });
-    print(_selectedIndex);
   }
   @override
   Widget build(BuildContext context) {
     var itemFavCount = Provider.of<ProductProvider>(context).getItemIsFavorite().length.toString();
     var itemSeenCount = Provider.of<ProductProvider>(context).getItemsIsSeen().length.toString();
-    var items = Provider.of<ProductProvider>(context).getItemIsFavorite();
-
+    //var delAllFav = Provider.of(context).handleRemoveAllFavorite();
+    //var delAllSeen = Provider.of(context).handleRemoveAllSeen();
     return FutureBuilder(
       future: _dataFuture,
       builder: (BuildContext content , AsyncSnapshot snapshot) {
@@ -88,14 +87,16 @@ class _MyAppState extends State<MyApp> {
               onSelected: (value) {
                 setState(() {
                   if (value == 0) {
+                   // delAllFav();
                   } else if (value == 1) {
+                   // delAllSeen();
                   }
                 });
               },
               itemBuilder: (_) => [
                 const PopupMenuItem(
                     value: 0,
-                    child: Text('Delete all favorite')
+                    child: Text('Delete all fav'),
                 ),
                 const PopupMenuItem(
                     value: 1,
@@ -111,16 +112,26 @@ class _MyAppState extends State<MyApp> {
       bottomNavigationBar: BottomNavigationBar(
         items:  <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Badge(
+                child: Icon(
+                    Icons.favorite
+                )
+            ),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Favorite$itemFavCount',
+            icon: Badge(
+                child: Icon(Icons.favorite),
+              badgeContent: Text('$itemFavCount'),
+            ),
+            label: 'Favorite',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.timelapse_sharp),
-            label: 'Seen$itemSeenCount',
+            icon: Badge(
+                child: Icon(Icons.timelapse_sharp),
+              badgeContent: Text('$itemSeenCount'),
+            ),
+            label: 'Seen',
           ),
         ],
         currentIndex: _selectedIndex,

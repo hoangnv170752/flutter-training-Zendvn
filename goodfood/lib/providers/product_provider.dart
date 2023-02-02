@@ -11,7 +11,6 @@ class ProductProvider extends ChangeNotifier {
   List<Product> getItemsWithCategoryId(categoryId) {
     return _items.where((element) => element.categoryId == categoryId).toList();
   }
-
   Product getItemWithId (id) {
     return _items.singleWhere((element) => element.id == id);
   }
