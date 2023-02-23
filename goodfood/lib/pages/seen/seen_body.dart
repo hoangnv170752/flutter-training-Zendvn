@@ -11,9 +11,8 @@ class SeenBody extends StatelessWidget {
     var items = Provider.of<ProductProvider>(context).getItemsIsSeen();
     var itemSeenCount = Provider.of<ProductProvider>(context).getItemsIsSeen().length;
     print(items.length);
-    return (items == [])  ? Center(
-              child: Text('Chưa có thành phần nào')
-          ) : ListView.builder(
+    return (items.length != 0 )  ?
+     ListView.builder(
       itemCount: items.length,
       padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
       itemBuilder: (BuildContext context, int index) {
@@ -81,6 +80,8 @@ class SeenBody extends StatelessWidget {
           ),
         );
       },
+    ) : Center(
+    child: Text('Chưa có thành phần nào')
     );
   }
 }

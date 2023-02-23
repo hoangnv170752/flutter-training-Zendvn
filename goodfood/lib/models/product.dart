@@ -49,12 +49,12 @@ class Product extends ChangeNotifier {
 
   void handleRemoveAllFavorite () {
     isFavorite  = false;
-    Product.fromJson(favorite = (int.parse(favorite) - 1).toString());
+    favorite = (int.parse(favorite) - 1).toString();
   }
 
   void handleRemoveAllSeen() {
       isSeen = false;
-      Product.fromJson(favorite = (int.parse(favorite) - 1).toString());
+      favorite = (int.parse(favorite) - 1).toString();
   }
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

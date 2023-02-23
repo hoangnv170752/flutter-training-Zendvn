@@ -13,6 +13,7 @@ import 'package:provider/provider.dart';
   Task 2: Bổ sung nút xóa tất cả các sản phẩm được yêu thích
   Task 3: Show ra những màn hình rỗng (hiển thị hình ảnh hay gì thay thế nếu không có favorite nào , v.v..)
   Task 4: Chức năng search | có nút search ở góc màn hình  => chuyển sang màn hình những sản phẩm được tìm thấy với từ khóa được highlight (can hoi huong thuc hien)
+  Task 5: Đổi font cho title screen
 */
 void main(List<String> args) {
   runApp(

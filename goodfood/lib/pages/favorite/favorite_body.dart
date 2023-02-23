@@ -10,9 +10,9 @@ class FavoriteBody extends StatelessWidget {
     var Items = Provider.of<ProductProvider>(context).getItemIsFavorite();
     var itemFavCount = Provider.of<ProductProvider>(context).getItemIsFavorite().length;
     print(Items);
-    return (Items == [])  ? Center(
-        child: Text('Chưa có thành phần nào')
-    ) : ListView.builder(
+    return Items.length != 0   ?
+    // Center(child: Text('Chưa có thành phần nào')):
+    ListView.builder(
         itemCount: Items.length,
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
         itemBuilder: (BuildContext context, int index) {
@@ -78,6 +78,10 @@ class FavoriteBody extends StatelessWidget {
             ),
           ) ;
         },
-    );
+    )
+    : Center(
+    child: Text('Chưa có thành phần nào')
+    )
+    ;
   }
 }

@@ -8,6 +8,7 @@ import 'package:goodfood/providers/product_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:badges/badges.dart';
 
+import '../models/product.dart';
 import 'home/widget/product.dart';
 
 class MyApp extends StatefulWidget {
@@ -61,16 +62,16 @@ class _MyAppState extends State<MyApp> {
   }
   @override
   Widget build(BuildContext context) {
-    var itemFavCount = Provider.of<ProductProvider>(context).getItemIsFavorite().length.toString();
+    var itemFavCount = Provider.of<ProductProvider>(context).getItemIsFavorite().length;
     var itemSeenCount = Provider.of<ProductProvider>(context).getItemsIsSeen().length.toString();
-    //var delAllFav = Provider.of(context).handleRemoveAllFavorite();
-    //var delAllSeen = Provider.of(context).handleRemoveAllSeen();
+    // var delAllFav = Provider.of<Product>(context).handleRemoveAllFavorite();
+    // var delAllSeen = Provider.of<Product>(context).handleRemoveAllSeen();
     return FutureBuilder(
       future: _dataFuture,
       builder: (BuildContext content , AsyncSnapshot snapshot) {
       return Scaffold(
         appBar: AppBar(
-          title:  Text(screenName),
+          title:  Text(screenName, style: TextStyle(fontFamily: 'Tomorrow')),
           centerTitle: true,
           backgroundColor: Theme.of(context).backgroundColor,
           flexibleSpace: Container(
@@ -87,9 +88,9 @@ class _MyAppState extends State<MyApp> {
               onSelected: (value) {
                 setState(() {
                   if (value == 0) {
-                   // delAllFav();
+                  //  delAllFav();
                   } else if (value == 1) {
-                   // delAllSeen();
+                  //  delAllSeen();
                   }
                 });
               },
@@ -120,11 +121,15 @@ class _MyAppState extends State<MyApp> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Badge(
-                child: Icon(Icons.favorite),
-              badgeContent: Text('$itemFavCount'),
+            icon: InkWell(
+              child: Badge(
+                  child: Icon(Icons.favorite),
+                badgeContent: Text('$itemFavCount'),
+                
+              ),
             ),
             label: 'Favorite',
+            
           ),
           BottomNavigationBarItem(
             icon: Badge(
