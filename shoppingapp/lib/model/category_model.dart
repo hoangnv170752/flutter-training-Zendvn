@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-class Sli {
+class Category {
   int id;
   String name;
   String image;
-  Sli({
+  Category({
     required this.id,
     required this.name,
     required this.image,
@@ -18,11 +18,12 @@ class Sli {
     };
   }
 
-  factory Sli.fromMap(Map<String, dynamic> map) {
-    return Sli(id: map['id'], name: map['name'], image: map['image']);
+  factory Category.fromMap(Map<String, dynamic> map) {
+    return Category(id: map['id'], name: map['name'], image: map['image']);
   }
 
   String toJson() => json.encode(toMap());
 
-  factory Sli.fromJson(String source) => Sli.fromMap(json.decode(source));
+  factory Category.fromJson(String source) =>
+      Category.fromMap(json.decode(source));
 }
