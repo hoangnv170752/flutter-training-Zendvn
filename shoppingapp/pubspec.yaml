@@ -41,7 +41,7 @@ dependencies:
   shared_preferences: ^2.0.18
   intl: ^0.18.0
   badges: ^3.0.2
-
+  flutter_svg: ^1.1.6
 
 dev_dependencies:
   flutter_test:
@@ -69,6 +69,7 @@ flutter:
   assets:
     - assets/images/logo.png
     - assets/images/ralli.png
+    - assets/images/svg/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

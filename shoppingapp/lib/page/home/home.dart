@@ -9,6 +9,7 @@ import 'package:shoppingapp/providers/auth_provider.dart';
 import 'package:shoppingapp/providers/cart_provider.dart';
 import '../auth/auth_page.dart';
 import '../cart/cart.dart';
+import '../order/list_order.dart';
 
 class HomePage extends StatelessWidget {
   static const routerName = '/';
@@ -36,8 +37,20 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    Provider.of<AuthProvider>(context).checkTimeExpires();
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,6 +80,16 @@ class Home extends StatelessWidget {
                             Navigator.pushNamed(
                               context,
                               HomePage.routerName,
+                            );
+                          },
+                        ),
+                        ListTile(
+                          leading: const Icon(Icons.library_books),
+                          title: Text('Danh sách đơn hàng'),
+                          onTap: () {
+                            Navigator.popAndPushNamed(
+                              context,
+                              ListOrder.routerName,
                             );
                           },
                         ),

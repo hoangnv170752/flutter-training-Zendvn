@@ -75,4 +75,9 @@ class CartProvider extends ChangeNotifier {
     }
     notifyListeners();
   }
+
+  void removeItem() {
+    items = {};
+    notifyListeners();
+  }
 }
