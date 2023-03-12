@@ -32,18 +32,55 @@ class _ProductPageState extends State<ProductPage> {
               ),
             ),
           ),
-          // Padding(
-          //   padding: const EdgeInsets.symmetric(horizontal: 20),
-          //   child: SizedBox(
-          //     width: double.infinity,
-          //     child: ElevatedButton(
-          //       child: const Text('Add Product'),
-          //       onPressed: () {},
-          //     ),
-          //   ),
-          // )
+          SliverToBoxAdapter(
+            child: SizedBox(
+              child: Column(children: [
+                Text(
+                  product.description,
+                  maxLines: 10,
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: Icon(
+                        Icons.remove,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 30,
+                    ),
+                    Text('1'),
+                    SizedBox(
+                      width: 30,
+                    ),
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: Icon(Icons.add),
+                    ),
+                  ],
+                )
+              ]),
+            ),
+          )
         ],
       ),
+      persistentFooterButtons: [
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              child: Text('Thêm sản phẩm'),
+              onPressed: () {},
+            ),
+          ),
+        )
+      ],
     );
   }
 }

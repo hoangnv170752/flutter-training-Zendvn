@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthProvider extends ChangeNotifier {
   String _token = '';
@@ -27,6 +28,11 @@ class AuthProvider extends ChangeNotifier {
       _token = responseData['access_token'];
       _expires = responseData['expires_in'];
       notifyListeners();
+      final prefs = await SharedPreferences.getInstance();
+      final userData = jsonEncode({
+        "token": _token,
+      });
+      await prefs.setString('userData', userData);
     } catch (e) {
       print(e);
     }
@@ -34,5 +40,21 @@ class AuthProvider extends ChangeNotifier {
 
   void login(String email, String password) {
     _authentication(email, password, 'login');
+  }
+
+  void logout() async {
+    _token = '';
+    _expires = 0;
+    notifyListeners();
+    final prefs = await SharedPreferences.getInstance();
+    prefs.remove('userData');
+  }
+
+  Future<bool> autoLogin() async {
+    final prefs = await SharedPreferences.getInstance();
+    if (!prefs.containsKey('userData')) {
+      return false;
+    }
+    return true;
   }
 }

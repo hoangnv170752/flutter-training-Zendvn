@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shoppingapp/providers/auth_provider.dart';
 
 class AuthPage extends StatelessWidget {
-  static const routerName = '/auth';
+  static const routeName = '/auth';
   AuthPage({Key? key}) : super(key: key);
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -37,6 +37,13 @@ class AuthPage extends StatelessWidget {
         padding: EdgeInsets.all(20),
         child: Column(
           children: [
+            Image(
+              image: AssetImage('assets/images/ralli.png'),
+              height: 200,
+            ),
+            SizedBox(
+              height: 20,
+            ),
             TextField(
               controller: _emailController,
               decoration: InputDecoration(
@@ -57,6 +64,7 @@ class AuthPage extends StatelessWidget {
             ),
             SizedBox(
               width: double.infinity,
+              height: 40,
               child: ElevatedButton(
                 onPressed: handleSubmit,
                 child: Text('Submit'),
