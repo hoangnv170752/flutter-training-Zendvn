@@ -13,7 +13,7 @@ class OrderProvider extends ChangeNotifier {
     var data = [];
     items.forEach((key, value) {
       data.add({
-        "productId": key,
+        "product_id": key,
         "quantity": value.quantity,
       });
     });
