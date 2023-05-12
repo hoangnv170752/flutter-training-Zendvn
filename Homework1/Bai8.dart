@@ -1,7 +1,7 @@
-void main(List<String> args) {
+void main() {
   List<int> arr = [5, 2, 2, 7, 3, 9, 8, 2, 12, 82, 10];
-  List<int> replacement = [2, 2];
-  print(arr.length);
-  arr.replaceRange(arr.length - 2, arr.length, replacement);
+  if (arr.lastIndexOf(2) > 0) {
+    arr[arr.lastIndexOf(2)] = 5;
+  }
   print(arr);
 }
