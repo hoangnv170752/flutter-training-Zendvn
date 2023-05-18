@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lesson2/pages/04.dart';
+import 'package:homework2/pages/BT01.dart';
 
 void main(List<String> args) {
   runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: Bt04(),
+    home: BT01(),
   ));
 }
