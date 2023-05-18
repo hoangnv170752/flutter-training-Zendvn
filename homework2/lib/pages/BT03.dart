@@ -10,7 +10,7 @@ class BT03 extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.white,
         title: Text(
-          "Traning",
+          "Training",
           style: TextStyle(
               fontSize: 25, color: Colors.black, fontWeight: FontWeight.bold),
         ),
@@ -147,6 +147,69 @@ class BT03 extends StatelessWidget {
                 height: 20,
               ),
               const Text("Quia voluptatum culpa"),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                child: GridView.count(
+                  shrinkWrap: true,
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                  scrollDirection: Axis.vertical,
+                  children: List.generate(
+                    20,
+                    (index) => Container(
+                      height: 400,
+                      width: 200,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(20),
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.2),
+                            spreadRadius: 5,
+                            blurRadius: 7,
+                            offset: Offset(2, 3), // changes position of shadow
+                          ),
+                        ],
+                      ),
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              height: 50,
+                              width: 50,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(90),
+                                ),
+                                color: Colors.amber,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(
+                                left: 20,
+                              ),
+                              child: Text(
+                                "Assumnda velit voluptates exerhfskf animi omnis expedita.",
+                                style: TextStyle(),
+                                maxLines: 3,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
               // GridView(
               //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               //     crossAxisCount: 2,
