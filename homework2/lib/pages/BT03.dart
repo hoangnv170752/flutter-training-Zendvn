@@ -157,6 +157,7 @@ class BT03 extends StatelessWidget {
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
                   scrollDirection: Axis.vertical,
+                  physics: NeverScrollableScrollPhysics(),
                   children: List.generate(
                     20,
                     (index) => Container(
