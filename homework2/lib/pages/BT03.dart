@@ -194,14 +194,16 @@ class BT03 extends StatelessWidget {
                             SizedBox(
                               height: 10,
                             ),
-                            Container(
-                              padding: EdgeInsets.only(
-                                left: 20,
-                              ),
-                              child: Text(
-                                "Assumnda velit voluptates exerhfskf animi omnis expedita.",
-                                style: TextStyle(),
-                                maxLines: 3,
+                            Center(
+                              child: Container(
+                                padding: EdgeInsets.only(
+                                  left: 20,
+                                ),
+                                child: Text(
+                                  "Assumnda velit voluptates exerhfskf animi omnis expedita.",
+                                  style: TextStyle(),
+                                  maxLines: 3,
+                                ),
                               ),
                             ),
                           ],
