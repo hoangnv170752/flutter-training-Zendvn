@@ -16,7 +16,7 @@ class Bt02 extends StatelessWidget {
         shadowColor: Colors.white,
         elevation: 0.0,
         centerTitle: false,
-        title: Text(
+        title: const Text(
           'TODOLIST-APP',
           style: TextStyle(
             color: Color.fromARGB(255, 87, 87, 87),
@@ -28,7 +28,7 @@ class Bt02 extends StatelessWidget {
           Container(
             height: 50,
             width: 120,
-            child: Center(
+            child: const Center(
               child: Text(
                 "Add Task",
                 style: TextStyle(
@@ -37,12 +37,12 @@ class Bt02 extends StatelessWidget {
                 ),
               ),
             ),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(30)),
-              color: Color.fromARGB(255, 255, 147, 117),
+              color: Color.fromARGB(255, 255, 183, 163),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 20,
           )
         ],
@@ -52,11 +52,11 @@ class Bt02 extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: EdgeInsets.only(
+            padding: const EdgeInsets.only(
               left: 20,
               top: 10,
             ),
-            child: Text(
+            child: const Text(
               "Daily task",
               style: TextStyle(
                 fontSize: 23,
@@ -72,7 +72,7 @@ class Bt02 extends StatelessWidget {
             flex: 10,
             child: Container(
               width: double.infinity,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(
                   Radius.circular(
                     50,
@@ -87,7 +87,7 @@ class Bt02 extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
-                        padding: EdgeInsets.only(
+                        padding: const EdgeInsets.only(
                           top: 60,
                           left: 30,
                         ),
@@ -97,25 +97,26 @@ class Bt02 extends StatelessWidget {
                               height: 180,
                               width: 60,
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.all(
+                                borderRadius: const BorderRadius.all(
                                   Radius.circular(
                                     40,
                                   ),
                                 ),
-                                color: Color.fromARGB(255, 253, 134, 104),
+                                color: const Color.fromARGB(255, 253, 134, 104),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Color(0xFF000000).withAlpha(60),
+                                    color:
+                                        const Color(0xFF000000).withAlpha(60),
                                     blurRadius: 6.0,
                                     spreadRadius: 0.0,
-                                    offset: Offset(
+                                    offset: const Offset(
                                       0.0,
                                       3.0,
                                     ),
                                   ),
                                 ],
                               ),
-                              child: RotatedBox(
+                              child: const RotatedBox(
                                 quarterTurns: -1,
                                 child: Center(
                                   child: Text(
@@ -130,96 +131,202 @@ class Bt02 extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 22,
                             ),
-                            Container(
-                              height: 180,
-                              width: 240,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(20),
-                                  bottomLeft: Radius.circular(20),
-                                  topRight: Radius.circular(40),
-                                  bottomRight: Radius.circular(40),
-                                ),
-                                color: Color.fromARGB(255, 253, 134, 104),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Color(0xFF000000).withAlpha(60),
-                                    blurRadius: 6.0,
-                                    spreadRadius: 0.0,
-                                    offset: Offset(
-                                      0.0,
-                                      3.0,
+                            Stack(
+                              children: [
+                                Container(
+                                  height: 180,
+                                  width: 240,
+                                  decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.only(
+                                      topLeft: Radius.circular(20),
+                                      bottomLeft: Radius.circular(20),
+                                      topRight: Radius.circular(40),
+                                      bottomRight: Radius.circular(40),
                                     ),
-                                  ),
-                                ],
-                              ),
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  Container(
-                                    width: 220,
-                                    padding: EdgeInsets.only(
-                                      left: 20,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: Color.fromARGB(255, 255, 167, 145),
-                                      borderRadius: BorderRadius.only(
-                                        topRight: Radius.circular(
-                                          40,
-                                        ),
-                                        bottomRight: Radius.circular(
-                                          40,
+                                    color: const Color.fromARGB(
+                                        255, 253, 134, 104),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: const Color(0xFF000000)
+                                            .withAlpha(60),
+                                        blurRadius: 6.0,
+                                        spreadRadius: 0.0,
+                                        offset: const Offset(
+                                          0.0,
+                                          3.0,
                                         ),
                                       ),
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Text(
-                                          "Hoc tap va lam viec",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontFamily: "DancingScript",
-                                            fontSize: 25,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Text(
-                                          "8 AM - 1 PM",
-                                          style: TextStyle(
-                                            color: Colors.red,
-                                            fontFamily: "DancingScript",
-                                            fontSize: 20,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Text(
-                                          "Minima sed voluptatem aliquid sed consequatur. Excepturi sunt in et odit sed. Doloremque quis inventore in voluptatibus aut aspernatur.",
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 19,
-                                          ),
-                                          maxLines: 3,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ],
-                                    ),
+                                    ],
                                   ),
-                                ],
-                              ),
+                                  child: Row(
+                                    children: [
+                                      const SizedBox(
+                                        width: 20,
+                                      ),
+                                      Container(
+                                        width: 220,
+                                        padding: const EdgeInsets.only(
+                                          left: 20,
+                                        ),
+                                        decoration: const BoxDecoration(
+                                          color: Color.fromARGB(
+                                              255, 255, 167, 145),
+                                          borderRadius: BorderRadius.only(
+                                            topRight: Radius.circular(
+                                              40,
+                                            ),
+                                            bottomRight: Radius.circular(
+                                              40,
+                                            ),
+                                          ),
+                                        ),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            const SizedBox(
+                                              height: 10,
+                                            ),
+                                            const Text(
+                                              "Hoc tap va lam viec",
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontFamily: "DancingScript",
+                                                fontSize: 25,
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              height: 10,
+                                            ),
+                                            const Text(
+                                              "8 AM - 1 PM",
+                                              style: TextStyle(
+                                                color: Colors.red,
+                                                fontFamily: "DancingScript",
+                                                fontSize: 20,
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              height: 10,
+                                            ),
+                                            const Text(
+                                              "Minima sed voluptatem aliquid sed consequatur. Excepturi sunt in et odit sed. Doloremque quis inventore in voluptatibus aut aspernatur.",
+                                              style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 19,
+                                              ),
+                                              maxLines: 3,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 150,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Positioned(
+                                  bottom: 0.0,
+                                  right: 10,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {},
+                                        child: Container(
+                                          alignment: Alignment.center,
+                                          width: 35,
+                                          height: 35,
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
+                                          child: const Icon(
+                                            Icons.workspace_premium,
+                                            size: 28,
+                                            color: Color(0xffE29833),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {},
+                                        child: Container(
+                                          alignment: Alignment.center,
+                                          width: 35,
+                                          height: 35,
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
+                                          child: const Icon(
+                                            Icons.browse_gallery,
+                                            size: 28,
+                                            color: Color.fromARGB(
+                                                255, 251, 234, 108),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {},
+                                        child: Container(
+                                          alignment: Alignment.center,
+                                          width: 35,
+                                          height: 35,
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
+                                          child: const Icon(
+                                            Icons.edit_note,
+                                            size: 28,
+                                            color: Color.fromARGB(
+                                                255, 94, 232, 117),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {},
+                                        child: Container(
+                                          alignment: Alignment.center,
+                                          width: 35,
+                                          height: 35,
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
+                                          child: const Icon(
+                                            Icons.delete_forever,
+                                            size: 28,
+                                            color: Color.fromARGB(
+                                                255, 49, 43, 230),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
                             ),
                           ],
                         ),
@@ -231,7 +338,7 @@ class Bt02 extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
-                        padding: EdgeInsets.only(
+                        padding: const EdgeInsets.only(
                           top: 60,
                           left: 30,
                         ),
@@ -241,25 +348,26 @@ class Bt02 extends StatelessWidget {
                               height: 180,
                               width: 60,
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.all(
+                                borderRadius: const BorderRadius.all(
                                   Radius.circular(
                                     40,
                                   ),
                                 ),
-                                color: Color.fromARGB(255, 130, 240, 75),
+                                color: const Color.fromARGB(255, 130, 240, 75),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Color(0xFF000000).withAlpha(60),
+                                    color:
+                                        const Color(0xFF000000).withAlpha(60),
                                     blurRadius: 6.0,
                                     spreadRadius: 0.0,
-                                    offset: Offset(
+                                    offset: const Offset(
                                       0.0,
                                       3.0,
                                     ),
                                   ),
                                 ],
                               ),
-                              child: RotatedBox(
+                              child: const RotatedBox(
                                 quarterTurns: -1,
                                 child: Center(
                                   child: Text(
@@ -274,100 +382,206 @@ class Bt02 extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 22,
                             ),
-                            Container(
-                              height: 180,
-                              width: 240,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(20),
-                                  bottomLeft: Radius.circular(20),
-                                  topRight: Radius.circular(40),
-                                  bottomRight: Radius.circular(40),
-                                ),
-                                color: Color.fromARGB(255, 130, 240, 75),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Color(0xFF000000).withAlpha(60),
-                                    blurRadius: 6.0,
-                                    spreadRadius: 0.0,
-                                    offset: Offset(
-                                      0.0,
-                                      3.0,
+                            Stack(
+                              children: [
+                                Container(
+                                  height: 180,
+                                  width: 240,
+                                  decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.only(
+                                      topLeft: Radius.circular(20),
+                                      bottomLeft: Radius.circular(20),
+                                      topRight: Radius.circular(40),
+                                      bottomRight: Radius.circular(40),
                                     ),
-                                  ),
-                                ],
-                              ),
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  Container(
-                                    width: 220,
-                                    padding: EdgeInsets.only(
-                                      left: 20,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: Color.fromARGB(255, 195, 255, 164),
-                                      borderRadius: BorderRadius.only(
-                                        topRight: Radius.circular(
-                                          40,
-                                        ),
-                                        bottomRight: Radius.circular(
-                                          40,
+                                    color:
+                                        const Color.fromARGB(255, 130, 240, 75),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: const Color(0xFF000000)
+                                            .withAlpha(60),
+                                        blurRadius: 6.0,
+                                        spreadRadius: 0.0,
+                                        offset: const Offset(
+                                          0.0,
+                                          3.0,
                                         ),
                                       ),
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Text(
-                                          "Hoc tap va lam viec",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontFamily: "DancingScript",
-                                            fontSize: 25,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Text(
-                                          "8 AM - 1 PM",
-                                          style: TextStyle(
-                                            color: Colors.red,
-                                            fontFamily: "DancingScript",
-                                            fontSize: 20,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Text(
-                                          "Minima sed voluptatem aliquid sed consequatur. Excepturi sunt in et odit sed. Doloremque quis inventore in voluptatibus aut aspernatur.",
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 19,
-                                          ),
-                                          maxLines: 3,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ],
-                                    ),
+                                    ],
                                   ),
-                                ],
-                              ),
+                                  child: Row(
+                                    children: [
+                                      const SizedBox(
+                                        width: 20,
+                                      ),
+                                      Container(
+                                        width: 220,
+                                        padding: const EdgeInsets.only(
+                                          left: 20,
+                                        ),
+                                        decoration: const BoxDecoration(
+                                          color: Color.fromARGB(
+                                              255, 182, 255, 145),
+                                          borderRadius: BorderRadius.only(
+                                            topRight: Radius.circular(
+                                              40,
+                                            ),
+                                            bottomRight: Radius.circular(
+                                              40,
+                                            ),
+                                          ),
+                                        ),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            const SizedBox(
+                                              height: 10,
+                                            ),
+                                            const Text(
+                                              "Hoc tap va lam viec",
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontFamily: "DancingScript",
+                                                fontSize: 25,
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              height: 10,
+                                            ),
+                                            const Text(
+                                              "8 AM - 1 PM",
+                                              style: TextStyle(
+                                                color: Colors.red,
+                                                fontFamily: "DancingScript",
+                                                fontSize: 20,
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              height: 10,
+                                            ),
+                                            const Text(
+                                              "Minima sed voluptatem aliquid sed consequatur. Excepturi sunt in et odit sed. Doloremque quis inventore in voluptatibus aut aspernatur.",
+                                              style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 19,
+                                              ),
+                                              maxLines: 3,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 150,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Positioned(
+                                  bottom: 0.0,
+                                  right: 10,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {},
+                                        child: Container(
+                                          alignment: Alignment.center,
+                                          width: 35,
+                                          height: 35,
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
+                                          child: const Icon(
+                                            Icons.workspace_premium,
+                                            size: 28,
+                                            color: Color(0xffE29833),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {},
+                                        child: Container(
+                                          alignment: Alignment.center,
+                                          width: 35,
+                                          height: 35,
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
+                                          child: const Icon(
+                                            Icons.browse_gallery,
+                                            size: 28,
+                                            color: Color.fromARGB(
+                                                255, 251, 234, 108),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {},
+                                        child: Container(
+                                          alignment: Alignment.center,
+                                          width: 35,
+                                          height: 35,
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
+                                          child: const Icon(
+                                            Icons.edit_note,
+                                            size: 28,
+                                            color: Color.fromARGB(
+                                                255, 94, 232, 117),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {},
+                                        child: Container(
+                                          alignment: Alignment.center,
+                                          width: 35,
+                                          height: 35,
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
+                                          child: const Icon(
+                                            Icons.delete_forever,
+                                            size: 28,
+                                            color: Color.fromARGB(
+                                                255, 49, 43, 230),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
                             ),
                           ],
                         ),
-                      )
+                      ),
                     ],
                   ),
                   Column(
@@ -375,7 +589,7 @@ class Bt02 extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
-                        padding: EdgeInsets.only(
+                        padding: const EdgeInsets.only(
                           top: 60,
                           left: 30,
                         ),
@@ -385,25 +599,26 @@ class Bt02 extends StatelessWidget {
                               height: 180,
                               width: 60,
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.all(
+                                borderRadius: const BorderRadius.all(
                                   Radius.circular(
                                     40,
                                   ),
                                 ),
-                                color: Color.fromARGB(255, 255, 121, 222),
+                                color: Color.fromARGB(255, 240, 75, 240),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Color(0xFF000000).withAlpha(60),
+                                    color:
+                                        const Color(0xFF000000).withAlpha(60),
                                     blurRadius: 6.0,
                                     spreadRadius: 0.0,
-                                    offset: Offset(
+                                    offset: const Offset(
                                       0.0,
                                       3.0,
                                     ),
                                   ),
                                 ],
                               ),
-                              child: RotatedBox(
+                              child: const RotatedBox(
                                 quarterTurns: -1,
                                 child: Center(
                                   child: Text(
@@ -418,106 +633,211 @@ class Bt02 extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 22,
                             ),
-                            Container(
-                              height: 180,
-                              width: 240,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(20),
-                                  bottomLeft: Radius.circular(20),
-                                  topRight: Radius.circular(40),
-                                  bottomRight: Radius.circular(40),
-                                ),
-                                color: Color.fromARGB(255, 255, 121, 222),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Color(0xFF000000).withAlpha(60),
-                                    blurRadius: 6.0,
-                                    spreadRadius: 0.0,
-                                    offset: Offset(
-                                      0.0,
-                                      3.0,
+                            Stack(
+                              children: [
+                                Container(
+                                  height: 180,
+                                  width: 240,
+                                  decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.only(
+                                      topLeft: Radius.circular(20),
+                                      bottomLeft: Radius.circular(20),
+                                      topRight: Radius.circular(40),
+                                      bottomRight: Radius.circular(40),
                                     ),
-                                  ),
-                                ],
-                              ),
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  Container(
-                                    width: 220,
-                                    padding: EdgeInsets.only(
-                                      left: 20,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: Color.fromARGB(255, 255, 168, 233),
-                                      borderRadius: BorderRadius.only(
-                                        topRight: Radius.circular(
-                                          40,
-                                        ),
-                                        bottomRight: Radius.circular(
-                                          40,
+                                    color: Color.fromARGB(255, 240, 75, 240),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: const Color(0xFF000000)
+                                            .withAlpha(60),
+                                        blurRadius: 6.0,
+                                        spreadRadius: 0.0,
+                                        offset: const Offset(
+                                          0.0,
+                                          3.0,
                                         ),
                                       ),
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Text(
-                                          "Hoc tap va lam viec",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontFamily: "DancingScript",
-                                            fontSize: 25,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Text(
-                                          "8 AM - 1 PM",
-                                          style: TextStyle(
-                                            color: Colors.red,
-                                            fontFamily: "DancingScript",
-                                            fontSize: 20,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Text(
-                                          "Minima sed voluptatem aliquid sed consequatur. Excepturi sunt in et odit sed. Doloremque quis inventore in voluptatibus aut aspernatur.",
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 19,
-                                          ),
-                                          maxLines: 3,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ],
-                                    ),
+                                    ],
                                   ),
-                                ],
-                              ),
+                                  child: Row(
+                                    children: [
+                                      const SizedBox(
+                                        width: 20,
+                                      ),
+                                      Container(
+                                        width: 220,
+                                        padding: const EdgeInsets.only(
+                                          left: 20,
+                                        ),
+                                        decoration: const BoxDecoration(
+                                          color: Color.fromARGB(
+                                              255, 255, 129, 255),
+                                          borderRadius: BorderRadius.only(
+                                            topRight: Radius.circular(
+                                              40,
+                                            ),
+                                            bottomRight: Radius.circular(
+                                              40,
+                                            ),
+                                          ),
+                                        ),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            const SizedBox(
+                                              height: 10,
+                                            ),
+                                            const Text(
+                                              "Hoc tap va lam viec",
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontFamily: "DancingScript",
+                                                fontSize: 25,
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              height: 10,
+                                            ),
+                                            const Text(
+                                              "8 AM - 1 PM",
+                                              style: TextStyle(
+                                                color: Colors.red,
+                                                fontFamily: "DancingScript",
+                                                fontSize: 20,
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              height: 10,
+                                            ),
+                                            const Text(
+                                              "Minima sed voluptatem aliquid sed consequatur. Excepturi sunt in et odit sed. Doloremque quis inventore in voluptatibus aut aspernatur.",
+                                              style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 19,
+                                              ),
+                                              maxLines: 3,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 150,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Positioned(
+                                  bottom: -10.0,
+                                  right: 10,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {},
+                                        child: Container(
+                                          alignment: Alignment.center,
+                                          width: 35,
+                                          height: 35,
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
+                                          child: const Icon(
+                                            Icons.workspace_premium,
+                                            size: 28,
+                                            color: Color(0xffE29833),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {},
+                                        child: Container(
+                                          alignment: Alignment.center,
+                                          width: 35,
+                                          height: 35,
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
+                                          child: const Icon(
+                                            Icons.browse_gallery,
+                                            size: 28,
+                                            color: Color.fromARGB(
+                                                255, 251, 234, 108),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {},
+                                        child: Container(
+                                          alignment: Alignment.center,
+                                          width: 35,
+                                          height: 35,
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
+                                          child: const Icon(
+                                            Icons.edit_note,
+                                            size: 28,
+                                            color: Color.fromARGB(
+                                                255, 94, 232, 117),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {},
+                                        child: Container(
+                                          alignment: Alignment.center,
+                                          width: 35,
+                                          height: 35,
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                          ),
+                                          child: const Icon(
+                                            Icons.delete_forever,
+                                            size: 28,
+                                            color: Color.fromARGB(
+                                                255, 49, 43, 230),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
                             ),
                           ],
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );
