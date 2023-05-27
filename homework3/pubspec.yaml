@@ -9,6 +9,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  google_fonts: ^4.0.4
+  provider: ^6.0.2
+
 
 dev_dependencies:
   flutter_test:
@@ -19,6 +22,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/wall.jpg
+    - assets/data/category.json
   fonts:
     - family: DancingScript
       fonts: 

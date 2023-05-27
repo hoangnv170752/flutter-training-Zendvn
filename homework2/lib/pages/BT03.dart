@@ -202,6 +202,7 @@ class BT03 extends StatelessWidget {
                                 child: Text(
                                   "Assumnda velit voluptates exerhfskf animi omnis expedita.",
                                   style: TextStyle(),
+                                  textAlign: TextAlign.center,
                                   maxLines: 3,
                                 ),
                               ),

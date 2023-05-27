@@ -135,6 +135,7 @@ class Bt02 extends StatelessWidget {
                               width: 22,
                             ),
                             Stack(
+                              clipBehavior: Clip.none,
                               children: [
                                 Container(
                                   height: 180,
@@ -234,8 +235,8 @@ class Bt02 extends StatelessWidget {
                                   height: 20,
                                 ),
                                 Positioned(
-                                  bottom: 0.0,
-                                  right: 10,
+                                  bottom: -10.0,
+                                  right: 0,
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
@@ -386,6 +387,7 @@ class Bt02 extends StatelessWidget {
                               width: 22,
                             ),
                             Stack(
+                              clipBehavior: Clip.none,
                               children: [
                                 Container(
                                   height: 180,
@@ -485,8 +487,8 @@ class Bt02 extends StatelessWidget {
                                   height: 20,
                                 ),
                                 Positioned(
-                                  bottom: 0.0,
-                                  right: 10,
+                                  bottom: -10.0,
+                                  right: 0,
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
@@ -637,6 +639,7 @@ class Bt02 extends StatelessWidget {
                               width: 22,
                             ),
                             Stack(
+                              clipBehavior: Clip.none,
                               children: [
                                 Container(
                                   height: 180,
@@ -736,7 +739,7 @@ class Bt02 extends StatelessWidget {
                                 ),
                                 Positioned(
                                   bottom: -10.0,
-                                  right: 10,
+                                  right: 0,
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
