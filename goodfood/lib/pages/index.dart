@@ -6,7 +6,7 @@ import 'package:goodfood/pages/home/widget/category.dart';
 import 'package:goodfood/pages/seen/seen_body.dart';
 import 'package:goodfood/providers/product_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:badges/badges.dart';
+import 'package:badges/badges.dart' as badges;
 
 import '../models/product.dart';
 import 'home/widget/product.dart';
@@ -25,11 +25,12 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void didChangeDependencies() {
-    _dataFuture =  Provider.of<ProductProvider>(context).readJson();
+    _dataFuture = Provider.of<ProductProvider>(context).readJson();
     super.didChangeDependencies();
   }
 
-  static TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static TextStyle optionStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions = <Widget>[
     HomeBody(),
     const FavoriteBody(),
@@ -38,7 +39,7 @@ class _MyAppState extends State<MyApp> {
 
   void screenNameChanged(int index) {
     setState(() {
-      switch(index) {
+      switch (index) {
         case 0:
           screenName = "Home screen";
           break;
@@ -60,93 +61,89 @@ class _MyAppState extends State<MyApp> {
       screenNameChanged(_selectedIndex);
     });
   }
+
   @override
   Widget build(BuildContext context) {
-    var itemFavCount = Provider.of<ProductProvider>(context).getItemIsFavorite().length;
-    var itemSeenCount = Provider.of<ProductProvider>(context).getItemsIsSeen().length.toString();
+    var itemFavCount =
+        Provider.of<ProductProvider>(context).getItemIsFavorite().length;
+    var itemSeenCount = Provider.of<ProductProvider>(context)
+        .getItemsIsSeen()
+        .length
+        .toString();
     // var delAllFav = Provider.of<Product>(context).handleRemoveAllFavorite();
     // var delAllSeen = Provider.of<Product>(context).handleRemoveAllSeen();
     return FutureBuilder(
-      future: _dataFuture,
-      builder: (BuildContext content , AsyncSnapshot snapshot) {
-      return Scaffold(
-        appBar: AppBar(
-          title:  Text(screenName, style: TextStyle(fontFamily: 'Tomorrow')),
-          centerTitle: true,
-          backgroundColor: Theme.of(context).backgroundColor,
-          flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                  colors: <Color>[Color.fromARGB(255, 123, 201, 95), Colors.blue],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter
-              ),
-            ),
-          ),
-          actions: [
-              PopupMenuButton(
-              onSelected: (value) {
-                setState(() {
-                  if (value == 0) {
-                  //  delAllFav();
-                  } else if (value == 1) {
-                  //  delAllSeen();
-                  }
-                });
-              },
-              itemBuilder: (_) => [
-                const PopupMenuItem(
-                    value: 0,
-                    child: Text('Delete all fav'),
+        future: _dataFuture,
+        builder: (BuildContext content, AsyncSnapshot snapshot) {
+          return Scaffold(
+            appBar: AppBar(
+              title: Text(screenName, style: TextStyle(fontFamily: 'Tomorrow')),
+              centerTitle: true,
+              backgroundColor: Theme.of(context).backgroundColor,
+              flexibleSpace: Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(colors: <Color>[
+                    Color.fromARGB(255, 123, 201, 95),
+                    Colors.blue
+                  ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
                 ),
-                const PopupMenuItem(
-                    value: 1,
-                    child: Text('Delete all seen')
-                ),
-            ],
-            ),
-          ],
-      ),
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items:  <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Badge(
-                child: Icon(
-                    Icons.favorite
-                )
-            ),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: InkWell(
-              child: Badge(
-                  child: Icon(Icons.favorite),
-                badgeContent: Text('$itemFavCount'),
-                
               ),
+              actions: [
+                PopupMenuButton(
+                  onSelected: (value) {
+                    setState(() {
+                      if (value == 0) {
+                        //  delAllFav();
+                      } else if (value == 1) {
+                        //  delAllSeen();
+                      }
+                    });
+                  },
+                  itemBuilder: (_) => [
+                    const PopupMenuItem(
+                      value: 0,
+                      child: Text('Delete all fav'),
+                    ),
+                    const PopupMenuItem(
+                        value: 1, child: Text('Delete all seen')),
+                  ],
+                ),
+              ],
             ),
-            label: 'Favorite',
-            
-          ),
-          BottomNavigationBarItem(
-            icon: Badge(
-                child: Icon(Icons.timelapse_sharp),
-              badgeContent: Text('$itemSeenCount'),
+            body: Center(
+              child: _widgetOptions.elementAt(_selectedIndex),
             ),
-            label: 'Seen',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: dColorIconButtonActive,
-        onTap: _onItemTapped,
-        backgroundColor: dColorCustom,
-        iconSize: sizeIconButton, 
-        unselectedItemColor: dColorIconButtonInactive,
-      ),
-    );
-    });
+            bottomNavigationBar: BottomNavigationBar(
+              items: <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                  icon: Badge(child: Icon(Icons.favorite)),
+                  label: 'Home',
+                ),
+                BottomNavigationBarItem(
+                  icon: InkWell(
+                    child: badges.Badge(
+                      child: Icon(Icons.favorite),
+                      badgeContent: Text('$itemFavCount'),
+                    ),
+                  ),
+                  label: 'Favorite',
+                ),
+                BottomNavigationBarItem(
+                  icon: badges.Badge(
+                    child: Icon(Icons.timelapse_sharp),
+                    badgeContent: Text('$itemSeenCount'),
+                  ),
+                  label: 'Seen',
+                ),
+              ],
+              currentIndex: _selectedIndex,
+              selectedItemColor: dColorIconButtonActive,
+              onTap: _onItemTapped,
+              backgroundColor: dColorCustom,
+              iconSize: sizeIconButton,
+              unselectedItemColor: dColorIconButtonInactive,
+            ),
+          );
+        });
   }
 }
