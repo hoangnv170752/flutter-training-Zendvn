@@ -152,9 +152,6 @@ class Bt2 extends StatelessWidget {
                     autoplay: false,
                     itemCount: categoryItem.length,
                     scrollDirection: Axis.vertical,
-                    pagination: const SwiperPagination(
-                        alignment: Alignment.centerRight),
-                    control: const SwiperControl(),
                   ),
                 ),
               )
