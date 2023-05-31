@@ -1,17 +1,24 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-class Album {
+import 'package:flutter/material.dart';
+
+class Album extends ChangeNotifier {
   int id;
   String name;
   String image;
   String description;
+  bool isFavorite = false;
   Album({
     required this.id,
     required this.name,
     required this.image,
     required this.description,
   });
+  void toggleIsFavorite() {
+    isFavorite = !isFavorite;
+    notifyListeners();
+  }
 
   Album copyWith({
     int? id,

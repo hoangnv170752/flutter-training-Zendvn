@@ -10,33 +10,34 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:homework3/provider/album_provider.dart';
 import 'package:homework3/provider/counter.dart';
 import 'package:provider/provider.dart';
-
+import 'package:badges/badges.dart' as badges;
 import '../components/Category.dart';
+import '../models/Album.dart';
 
 class Bt2 extends StatelessWidget {
-  static const routeName = '/';
+  static const routeName = '/old';
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
       future: AlbumProvider().readJson(),
       builder: (BuildContext content, AsyncSnapshot snapshot) {
-        print(snapshot);
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(child: CircularProgressIndicator());
         }
         var categoryItem = snapshot.hasData ? snapshot.data : [];
-        print(categoryItem);
         return snapshot.hasData
-            ?
-            // GridView.builder(
-            //     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-            //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            //         crossAxisCount: 2,
-            //         crossAxisSpacing: 10,
-            //         mainAxisSpacing: 10),
-            //     itemCount: categoryItem.length,
-            //     itemBuilder: (BuildContext context, int index) {
-            Scaffold(
+            ? Scaffold(
+                appBar: AppBar(
+                  elevation: 0,
+                  leading: badges.Badge(
+                    position: badges.BadgePosition.topEnd(top: 10, end: 10),
+                    child: IconButton(
+                      icon: Icon(Icons.favorite),
+                      onPressed: () {},
+                    ),
+                  ),
+                ),
                 body: Container(
                   decoration: BoxDecoration(
                     image: DecorationImage(
@@ -86,18 +87,42 @@ class Bt2 extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Container(
-                                  padding: EdgeInsets.only(
-                                    left: 20,
-                                    top: 20,
-                                  ),
-                                  child: Text(
-                                    categoryItem[index].name,
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
+                                Stack(
+                                  children: [
+                                    Container(
+                                      padding: EdgeInsets.only(
+                                        left: 20,
+                                        top: 20,
+                                      ),
+                                      child: Container(
+                                        width: 300,
+                                        child: Text(
+                                          categoryItem[index].name,
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 20,
+                                          ),
+                                        ),
+                                      ),
                                     ),
-                                  ),
+                                    Positioned(
+                                      top: 20,
+                                      right: 15,
+                                      child: StatefulBuilder(
+                                          builder: (context, item) {
+                                        return InkWell(
+                                          onTap: () {},
+                                          child: Icon(
+                                            Icons.favorite,
+                                            color:
+                                                categoryItem[index].isFavorite
+                                                    ? Colors.white
+                                                    : Colors.red,
+                                          ),
+                                        );
+                                      }),
+                                    )
+                                  ],
                                 ),
                                 Expanded(
                                   child: Container(),

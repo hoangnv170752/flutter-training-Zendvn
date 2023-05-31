@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:homework3/pages/Bt1.dart';
+import 'package:homework3/pages/Bt2-fix.dart';
 import 'package:homework3/pages/Bt2.dart';
 import 'package:homework3/pages/index.dart';
 import 'package:homework3/provider/album_provider.dart';
@@ -27,6 +28,8 @@ void main(List<String> args) {
           // ignore: equal_keys_in_map
           Bt2.routeName: ((context) => Bt2()),
           CategoryPage.routeName: ((context) => CategoryPage()),
+          // ignore: equal_keys_in_map
+          Bt2fix.routeName: ((context) => Bt2fix()),
         },
       ),
     ),

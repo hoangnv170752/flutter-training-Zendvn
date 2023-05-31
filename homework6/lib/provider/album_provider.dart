@@ -8,7 +8,21 @@ import '../models/Album.dart';
 class AlbumProvider extends ChangeNotifier {
   List<Album> _item = [];
 
-  List<Album> get items => [..._item];
+  List<Album> get items {
+    return [..._item];
+  }
+
+  int _countItemFavorite = 0;
+
+  int get countItemFavorite {
+    return _countItemFavorite;
+  }
+
+  void handleCountItemFav() {
+    _countItemFavorite = _item.where((element) => element.isFavorite).length;
+    print(_countItemFavorite);
+    notifyListeners();
+  }
 
   Future<List<Album>> readJson() async {
     final String response =
