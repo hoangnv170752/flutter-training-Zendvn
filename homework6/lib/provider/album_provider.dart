@@ -7,6 +7,7 @@ import '../models/Album.dart';
 
 class AlbumProvider extends ChangeNotifier {
   List<Album> _item = [];
+  List<int> _imgsFavorite = [];
 
   List<Album> get items {
     return [..._item];
