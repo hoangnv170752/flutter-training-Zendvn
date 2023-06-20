@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:meals_app/models/category.dart';
-import 'package:flutter/material.dart';
 
-import 'package:meals_app/models/category.dart';
+import '../models/category.dart';
 
 class CategoryGridItem extends StatelessWidget {
   const CategoryGridItem({
@@ -14,6 +11,7 @@ class CategoryGridItem extends StatelessWidget {
 
   final Category category;
   final void Function() onSelectCategory;
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
