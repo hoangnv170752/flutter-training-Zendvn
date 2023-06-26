@@ -5,6 +5,7 @@ import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:lesson_newsapp/app/color.dart';
 import 'package:lesson_newsapp/app/constant.dart';
 import 'package:lesson_newsapp/pages/category/category_page.dart';
+import 'package:lesson_newsapp/pages/wait/wait_screen.dart';
 
 class NewsDrawer extends StatelessWidget {
   const NewsDrawer({
@@ -65,7 +66,6 @@ class NewsDrawer extends StatelessWidget {
                 style: Theme.of(context).textTheme.titleMedium),
             onTap: () {
               control.hideDrawer();
-
               Navigator.pushNamed(context, CategoryPage.routerName);
             },
           ),
@@ -86,8 +86,16 @@ class NewsDrawer extends StatelessWidget {
           ListTile(
             title: Row(
               children: [
-                Text('Dang Xuat',
-                    style: Theme.of(context).textTheme.titleMedium),
+                InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      WaitScreen.routerName,
+                    );
+                  },
+                  child: Text('Dang Xuat',
+                      style: Theme.of(context).textTheme.titleMedium),
+                ),
                 SizedBox(
                   width: 10,
                 ),

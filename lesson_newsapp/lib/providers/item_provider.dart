@@ -20,8 +20,9 @@ class CategoryProvider extends ChangeNotifier {
     try {
       List<CategoryModel> rs = await CategoryRepository.getCategories();
       _categories.clear();
-      _categories.addAll(rs);
 
+      _categories.addAll(rs);
+      print(rs);
       return rs;
     } catch (e) {
       return Future.error(Exception(e.toString()));
@@ -31,8 +32,11 @@ class CategoryProvider extends ChangeNotifier {
   Future<List<ArticleModel>> loadArticles(int categoryID,
       {int offset = 0, int limit = 20}) async {
     try {
-      List<ArticleModel> rs = await CategoryRepository.getArticles(categoryID,
-          offset: offset, limit: limit);
+      List<ArticleModel> rs = await CategoryRepository.getArticles(
+        categoryID,
+        offset: offset,
+        limit: limit,
+      );
       return rs;
     } catch (e) {
       return Future.error(Exception(e.toString()));

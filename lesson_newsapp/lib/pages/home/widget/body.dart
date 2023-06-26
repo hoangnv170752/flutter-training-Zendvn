@@ -23,7 +23,7 @@ class HomeBody extends StatelessWidget {
         .categories
         .where((element) => element.id == categoryId)
         .firstOrNull;
-
+    print(cate);
     return FutureBuilder<List<ArticleModel>>(
       future:
           context.read<CategoryProvider>().loadArticles(categoryId, limit: 4),
