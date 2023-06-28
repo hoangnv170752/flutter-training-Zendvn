@@ -9,15 +9,6 @@ class CategoryPage extends StatelessWidget {
       backgroundColor: Colors.amber,
       body: Stack(
         children: [
-          Positioned(
-            top: 60,
-            left: 20,
-            child: InkWell(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: const Icon(Icons.arrow_circle_left)),
-          ),
           // Column(
           //   mainAxisAlignment: MainAxisAlignment.center,
           //   children: [
@@ -44,6 +35,20 @@ class CategoryPage extends StatelessWidget {
             ),
           )
         ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Trang chu',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.business),
+            label: 'Danh sach',
+          ),
+        ],
+        currentIndex: 0,
+        selectedItemColor: Colors.amber[800],
       ),
     );
   }

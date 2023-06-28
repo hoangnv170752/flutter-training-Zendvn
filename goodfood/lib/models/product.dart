@@ -27,17 +27,20 @@ class Product extends ChangeNotifier {
     required this.view,
     required this.favorite,
   });
-  void toggleIsFavorite () {
+  // add favorite to 1 if it is picked  || to 0 if it is not
+  void toggleIsFavorite() {
     isFavorite = !isFavorite;
-    favorite = isFavorite 
-    ? (int.parse(favorite) + 1).toString() 
-    : (int.parse(favorite) - 1).toString();
+    favorite = isFavorite
+        ? (int.parse(favorite) + 1).toString()
+        : (int.parse(favorite) - 1).toString();
     notifyListeners();
   }
+
   void toggleIsSeen() {
     isSeen = true;
   }
-  void handleRemoveIsFavorite () {
+
+  void handleRemoveIsFavorite() {
     isFavorite = false;
     favorite = (int.parse(favorite) - 1).toString();
     print(favorite);
@@ -47,15 +50,16 @@ class Product extends ChangeNotifier {
     isSeen = false;
   }
 
-  void handleRemoveAllFavorite () {
-    isFavorite  = false;
+  void handleRemoveAllFavorite() {
+    isFavorite = false;
     favorite = (int.parse(favorite) - 1).toString();
   }
 
   void handleRemoveAllSeen() {
-      isSeen = false;
-      favorite = (int.parse(favorite) - 1).toString();
+    isSeen = false;
+    favorite = (int.parse(favorite) - 1).toString();
   }
+
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
@@ -86,5 +90,6 @@ class Product extends ChangeNotifier {
 
   String toJson() => json.encode(toMap());
 
-  factory Product.fromJson(String source) => Product.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory Product.fromJson(String source) =>
+      Product.fromMap(json.decode(source) as Map<String, dynamic>);
 }

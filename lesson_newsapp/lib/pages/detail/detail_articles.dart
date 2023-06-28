@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lesson_newsapp/app/color.dart';
 import 'package:lesson_newsapp/app/constant.dart';
 import 'package:lesson_newsapp/models/article_model.dart';
+import 'package:lesson_newsapp/providers/item_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class DetailArticlePage extends StatefulWidget {
@@ -20,6 +22,8 @@ class _DetailArticlePageState extends State<DetailArticlePage> {
 
   @override
   Widget build(BuildContext context) {
+    // var product = Provider.of<ArticleModel>(context, listen: false);
+
     final Map<dynamic, dynamic> parms =
         (ModalRoute.of(context)?.settings.arguments ?? {})
             as Map<dynamic, dynamic>;
@@ -29,8 +33,34 @@ class _DetailArticlePageState extends State<DetailArticlePage> {
         backgroundColor: AppColor.cPrimary,
         title: Text(
           article.title,
-          style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              fontSize: AppConstant.cTextHeaderSize,
+              fontWeight: FontWeight.bold),
         ),
+        actions: [
+          // Consumer<ArticleModel>(
+          //   builder: (((context, value, child) {
+          //     return InkWell(
+          //       onTap: (() {
+          //         value.toggleIsFavorite();
+          //       }),
+          //       child: Icon(
+          //         Icons.favorite,
+          //         size: AppConstant.cHeaderIconSize,
+          //         color: Colors.red,
+          //       ),
+          //     );
+          //   })),
+          // ),
+          InkWell(
+            onTap: (() {}),
+            child: Icon(
+              Icons.favorite,
+              size: AppConstant.cHeaderIconSize,
+              color: Colors.red,
+            ),
+          )
+        ],
       ),
       // body: Center(
       //   child: SingleChildScrollView(
@@ -43,12 +73,24 @@ class _DetailArticlePageState extends State<DetailArticlePage> {
       //     ),
       //   ),
       // ),
-      body: WebViewWidget(
-        controller: WebViewController()
-          ..loadRequest(
-            Uri.parse(article.link),
-          ),
-      ),
+      body: article.link != ''
+          ? WebViewWidget(
+              controller: WebViewController()
+                ..loadRequest(
+                  Uri.parse(article.link),
+                ),
+            )
+          : Center(
+              child: SingleChildScrollView(
+                padding: EdgeInsets.symmetric(
+                    horizontal: AppConstant.cDefaultPadding),
+                child: Column(
+                  children: [
+                    Text(article.description),
+                  ],
+                ),
+              ),
+            ),
     );
   }
 }

@@ -24,7 +24,7 @@ class RouteCustom {
           );
         }
         return PageTransition(
-          child: const CategoryPage(),
+          child: CategoryPage(),
           type: PageTransitionType.fade,
         );
       default:

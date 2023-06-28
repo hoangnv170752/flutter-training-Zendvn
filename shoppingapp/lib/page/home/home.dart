@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<AuthProvider>(
       builder: (context, auth, child) {
-        return auth.isAuth
+        return !auth.isAuth
             ? Home()
             : FutureBuilder(
                 future: auth.autoLogin(),

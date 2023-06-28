@@ -1,10 +1,11 @@
+import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:lesson_newsapp/models/category_model.dart';
 
 part 'article_model.g.dart';
 
 @JsonSerializable()
-class ArticleModel {
+class ArticleModel extends ChangeNotifier {
   @JsonKey(name: 'id')
   int id;
   @JsonKey(name: 'title')
@@ -46,7 +47,7 @@ class ArticleModel {
 
   @JsonKey(name: 'category')
   CategoryModel category;
-
+  bool isFavorited = false;
   ArticleModel({
     required this.id,
     required this.title,
@@ -64,6 +65,13 @@ class ArticleModel {
     required this.status,
     required this.category,
   });
+
+  void toggleIsFavorite() {
+    isFavorited = !isFavorited;
+    status = (isFavorited ? (status + 1).toString() : (status - 1).toString())
+        as int;
+    notifyListeners();
+  }
 
   factory ArticleModel.fromJson(Map<String, dynamic> json) =>
       _$ArticleModelFromJson(json);
