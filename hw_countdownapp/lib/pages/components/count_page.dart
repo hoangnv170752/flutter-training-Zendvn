@@ -97,8 +97,8 @@ class _State extends State<CountDownTimerPage> {
                       fontWeight: FontWeight.bold,
                     ),
                     textFormat: CountdownTextFormat.S,
-                    isReverse: false,
-                    isReverseAnimation: false,
+                    isReverse: true,
+                    isReverseAnimation: true,
                     isTimerTextShown: true,
                     autoStart: false,
                     onStart: () {
