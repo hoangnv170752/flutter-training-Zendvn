@@ -1,0 +1,28 @@
+name: hw_movieapp
+description: A new Flutter project.
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.0.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: 
+  sizer: 
+  flutter_spinkit: 
+  cached_network_image: 
+  fluttertoast: 
+  http: 
+  path_provider: 
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/details_background.jpg
