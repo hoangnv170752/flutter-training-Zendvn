@@ -16,7 +16,6 @@ class MovieCardContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      //movie_card_container
       child: Padding(
         padding: EdgeInsets.only(right: 2.w, left: 2.w),
         child: SingleChildScrollView(
